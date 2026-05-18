@@ -13,7 +13,7 @@ group_id = -1003736427017
 
 
 def home_page(request):
-    return render(request,'home.html')
+    return render(request,'index.html')
 
 
 
