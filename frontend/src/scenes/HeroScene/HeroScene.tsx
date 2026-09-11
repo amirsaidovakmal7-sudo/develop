@@ -27,9 +27,9 @@ export function HeroScene({ containerRef }: HeroSceneProps) {
       <WebglErrorBoundary fallback={<StaticFallback />}>
         <Suspense fallback={<StaticFallback />}>
           <Canvas
-            dpr={[1, isTouch ? 1.3 : 1.8]}
-            gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-            camera={{ position: [0, 0, isTouch ? 11 : 5.2], fov: 42 }}
+            dpr={[1, isTouch ? 1.25 : 1.5]}
+            gl={{ antialias: !isTouch, alpha: true, powerPreference: 'high-performance' }}
+            camera={{ position: [0, 0, isTouch ? 11 : 5.6], fov: 42 }}
           >
             <DigitalCore containerRef={containerRef} reducedMotion={reducedMotion} lowPower={isTouch} />
           </Canvas>

@@ -86,6 +86,10 @@ export const en: Translations = {
     title: 'SELECTED WORK',
     intro:
       'Real projects built for business — from landing pages and one-page sites to online shops and Telegram bots. Each one solves a specific problem for the client.',
+    progressLabel: 'Project',
+    moreLabel: 'More work',
+    moreTitle: 'OTHER PROJECTS',
+    moreIntro: 'The rest of the lineup — from learning platforms and online shops to bots for business.',
     filterAll: 'All',
     filterWebsites: 'Websites',
     filterWebapps: 'Web apps',

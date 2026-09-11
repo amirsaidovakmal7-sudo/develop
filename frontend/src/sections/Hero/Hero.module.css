@@ -151,6 +151,16 @@
   transform: translateY(-2px);
 }
 
+.arrow {
+  display: inline-block;
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
+.btnPrimary:hover .arrow,
+.btnGhost:hover .arrow {
+  transform: translateX(4px);
+}
+
 .scrollHint {
   position: absolute;
   left: var(--space-gutter);

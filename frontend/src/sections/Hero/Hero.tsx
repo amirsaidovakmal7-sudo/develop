@@ -1,5 +1,5 @@
 import { lazy, Suspense, useRef } from 'react';
-import { motion, type Variants } from 'motion/react';
+import { motion, useScroll, useTransform, type Variants } from 'motion/react';
 import { useTranslation } from '../../i18n';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import styles from './Hero.module.css';
@@ -23,6 +23,15 @@ export function Hero() {
   const reducedMotion = usePrefersReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
 
+  // Scroll-based hero transition (REDIZIGN_TASK.md п.18): the headline
+  // settles/fades/lifts slightly as the user starts scrolling away, instead
+  // of just disappearing under the next section — a cheap motion-value
+  // transform, not a per-frame React state update.
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
+  const innerOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.15]);
+  const innerY = useTransform(scrollYProgress, [0, 1], [0, -70]);
+  const innerScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
+
   return (
     <section id="hero" ref={sectionRef} className={styles.hero}>
       <div className={styles.grid} aria-hidden="true" />
@@ -36,6 +45,7 @@ export function Hero() {
         variants={reducedMotion ? undefined : container}
         initial={reducedMotion ? undefined : 'hidden'}
         animate={reducedMotion ? undefined : 'show'}
+        style={reducedMotion ? undefined : { opacity: innerOpacity, y: innerY, scale: innerScale }}
       >
         <motion.div variants={reducedMotion ? undefined : rise} className={styles.badge}>
           <span className={styles.badgeDot} />
@@ -70,9 +80,15 @@ export function Hero() {
         <motion.div variants={reducedMotion ? undefined : rise} className={styles.actions}>
           <a href="#work" className={styles.btnPrimary} data-cursor="view">
             {t.hero.ctaWork}
+            <span className={styles.arrow} aria-hidden="true">
+              →
+            </span>
           </a>
           <a href="#contact" className={styles.btnGhost} data-cursor="explore">
             {t.hero.ctaOrder}
+            <span className={styles.arrow} aria-hidden="true">
+              →
+            </span>
           </a>
         </motion.div>
       </motion.div>

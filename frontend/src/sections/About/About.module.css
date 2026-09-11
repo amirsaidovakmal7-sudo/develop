@@ -35,8 +35,9 @@
   margin-top: var(--space-md);
 }
 
-.statement span {
+.statement .line {
   display: block;
+  overflow: hidden;
 }
 
 .statement .accent {

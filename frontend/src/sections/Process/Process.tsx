@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { useTranslation } from '../../i18n';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import { ensureGsapReady, ScrollTrigger } from '../../lib/gsapSetup';
@@ -40,9 +41,16 @@ export function Process() {
   return (
     <section id="process" className={`${styles.process} section`}>
       <div className="container">
-        <span className="section-label">{t.process.label}</span>
-        <h2 className={styles.title}>{t.process.title}</h2>
-        <p className={styles.intro}>{t.process.intro}</p>
+        <motion.div
+          initial={reducedMotion ? undefined : { opacity: 0, y: 20 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="section-label">{t.process.label}</span>
+          <h2 className={styles.title}>{t.process.title}</h2>
+          <p className={styles.intro}>{t.process.intro}</p>
+        </motion.div>
 
         <div className={styles.timeline} ref={timelineRef} style={{ ['--progress' as string]: progress }}>
           <div className={styles.track} />

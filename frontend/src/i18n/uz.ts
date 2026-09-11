@@ -86,6 +86,10 @@ export const uz: Translations = {
     title: 'TANLANGAN ISHLAR',
     intro:
       "Biznes uchun yaratilgan real loyihalar — lending va vizit-saytlardan tortib internet-do'konlar va Telegram-botlargacha. Har biri buyurtmachining aniq vazifasini hal qiladi.",
+    progressLabel: 'Loyiha',
+    moreLabel: "Boshqa loyihalar",
+    moreTitle: 'BOSHQA ISHLAR',
+    moreIntro: "Qolgan loyihalar — o'quv platformalaridan va internet-do'konlardan tortib biznes uchun botlargacha.",
     filterAll: 'Barchasi',
     filterWebsites: 'Saytlar',
     filterWebapps: 'Veb-ilovalar',

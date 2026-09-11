@@ -4,6 +4,7 @@ import { projects, type ProjectDefinition } from '../../data/projects';
 import { useTranslation } from '../../i18n';
 import { ProjectCard, type Composition } from './ProjectCard';
 import { ProjectViewer } from '../../components/ProjectViewer/ProjectViewer';
+import { FeaturedWork } from './FeaturedWork';
 import styles from './Projects.module.css';
 
 type FilterId = 'all' | 'website' | 'webapp' | 'bot' | 'other';
@@ -44,12 +45,14 @@ export function Projects() {
 
   return (
     <section id="work" className={`${styles.projects} section`}>
+      <FeaturedWork onOpen={setOpenProject} />
+
       <div className="container">
         <div className={styles.header}>
           <div>
-            <span className="section-label">{t.projects.label}</span>
-            <h2 className={styles.title}>{t.projects.title}</h2>
-            <p className={styles.intro}>{t.projects.intro}</p>
+            <span className="section-label">{t.projects.moreLabel}</span>
+            <h2 className={styles.title}>{t.projects.moreTitle}</h2>
+            <p className={styles.intro}>{t.projects.moreIntro}</p>
           </div>
           <div className={styles.filters} role="group">
             {FILTERS.map((f) => (

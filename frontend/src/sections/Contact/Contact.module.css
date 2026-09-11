@@ -55,6 +55,7 @@
 
 .title span {
   display: block;
+  overflow: hidden;
 }
 
 .subtitle {
