@@ -1,0 +1,123 @@
+/*
+  Design tokens — single source of truth for color, type, spacing, motion.
+  "Creative Digital Objects" visual language (см. TECH_TASK_REDISIGN.md, п.4-6, 60, 63).
+
+  Foundation is a warm-white editorial canvas. Color carries meaning, not
+  decoration (п.6):
+    Indigo   = technology / intelligence  → primary brand + interactive accent
+    Cyan     = motion / data              → progress, scroll, secondary highlight
+    Lavender = creativity                 → gradient/expressive accents
+    Peach    = human / communication      → contact, status, confirmation
+    Black    = information                → primary text
+  One deliberate dark "ink" segment (Contact → Footer) breaks the light
+  canvas as the page's closing crescendo (п.63) — everywhere else stays
+  light/warm. See Contact.module.css / Footer.module.css for the local
+  token overrides that switch that subtree to the ink palette.
+*/
+:root {
+  /* ── Color: light foundation (default canvas) ── */
+  --color-bg: #f4f3ee;
+  --color-bg-soft: #f7f7f4;
+  --color-bg-muted: #efefe9;
+  --color-surface: rgba(17, 18, 20, 0.035);
+  --color-surface-strong: rgba(17, 18, 20, 0.055);
+  --color-surface-hover: rgba(17, 18, 20, 0.075);
+  --color-border: rgba(17, 18, 20, 0.1);
+  --color-border-strong: rgba(17, 18, 20, 0.18);
+
+  /* ── Color: ink (primary text everywhere; also the background of the
+       one controlled dark segment — Contact/Footer) ── */
+  --color-ink: #111214;
+  --color-ink-soft: #1a1b1f;
+  --color-on-ink: #f4f3ee;
+  --color-on-ink-muted: rgba(244, 243, 238, 0.64);
+  --color-on-ink-faint: rgba(244, 243, 238, 0.4);
+  --color-on-ink-border: rgba(244, 243, 238, 0.14);
+  --color-on-ink-border-strong: rgba(244, 243, 238, 0.26);
+  --color-on-ink-surface: rgba(244, 243, 238, 0.06);
+  --color-on-ink-surface-strong: rgba(244, 243, 238, 0.1);
+
+  /* ── Color: text (on light canvas) ── */
+  --color-text: var(--color-ink);
+  --color-text-muted: #65676b;
+  --color-text-faint: rgba(17, 18, 20, 0.42);
+
+  /* ── Color: accents — used sparingly, each with a fixed meaning (п.6),
+       mostly as light sources, gradients and interactive states rather
+       than flat blocks (п.5) ── */
+  --color-indigo: #5b5fef; /* technology / intelligence — primary accent */
+  --color-indigo-dim: rgba(91, 95, 239, 0.12);
+  --color-cyan: #4fc9ef; /* motion / data */
+  --color-cyan-dim: rgba(79, 201, 239, 0.14);
+  --color-lavender: #a88bff; /* creativity */
+  --color-lavender-dim: rgba(168, 139, 255, 0.16);
+  --color-peach: #ff9d7f; /* human / communication */
+  --color-peach-dim: rgba(255, 157, 127, 0.18);
+
+  /* ── Typography ── */
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter Tight', 'Segoe UI', sans-serif;
+
+  --fs-hero: clamp(2.75rem, 3.2rem + 5vw, 8.5rem);
+  --fs-display-lg: clamp(2.25rem, 1.7rem + 3.2vw, 4.5rem);
+  --fs-display-md: clamp(1.75rem, 1.4rem + 1.8vw, 2.75rem);
+  --fs-display-sm: clamp(1.35rem, 1.15rem + 1vw, 1.85rem);
+  --fs-body-lg: clamp(1.05rem, 1rem + 0.3vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
+  --fs-label: 0.78rem;
+
+  --lh-tight: 1.04;
+  --lh-snug: 1.2;
+  --lh-normal: 1.55;
+  --ls-tight: -0.03em;
+  --ls-label: 0.16em;
+
+  /* ── Spacing scale ── */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+  --space-section: clamp(5rem, 4rem + 4vw, 9rem);
+  --space-gutter: clamp(1.25rem, 1rem + 2vw, 3rem);
+
+  /* ── Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* ── Shadows (tuned for a light canvas — soft, diffuse, not glow-on-black) ── */
+  --shadow-soft: 0 20px 60px rgba(17, 18, 20, 0.1);
+  --shadow-card: 0 1px 2px rgba(17, 18, 20, 0.04), 0 12px 32px rgba(17, 18, 20, 0.06);
+  --shadow-glow-indigo: 0 10px 32px rgba(91, 95, 239, 0.3);
+  --shadow-glow-cyan: 0 10px 32px rgba(79, 201, 239, 0.28);
+  --shadow-glow-peach: 0 10px 32px rgba(255, 157, 127, 0.32);
+
+  /* ── Motion (п.39) ── */
+  --dur-ui: 220ms;
+  --dur-content: 550ms;
+  --dur-cinematic: 1200ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0.9, 0.15, 1);
+
+  /* ── Z-index scale ── */
+  --z-base: 0;
+  --z-scene: 1;
+  --z-content: 10;
+  --z-header: 500;
+  --z-cursor-target: 600;
+  --z-modal: 900;
+  --z-cursor: 9999;
+
+  color-scheme: light;
+}
+
+/* ── Breakpoints reference (used as literals in @media across the app) ──
+   360, 390, 430, 768, 1024, 1280, 1440, 1920 — см. TECH_TASK_REDISIGN.md п.65 */

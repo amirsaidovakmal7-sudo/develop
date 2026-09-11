@@ -1,0 +1,62 @@
+/* Continuation of the Contact dark segment (п.64) — same local token overrides. */
+.footer {
+  position: relative;
+  background: var(--color-ink);
+  border-top: 1px solid var(--color-on-ink-border);
+  padding-block: var(--space-2xl);
+  --color-text: var(--color-on-ink);
+  --color-text-muted: var(--color-on-ink-muted);
+  --color-text-faint: var(--color-on-ink-faint);
+  --color-border: var(--color-on-ink-border);
+  /* See Contact.module.css — inherited `color` needs its own explicit
+     declaration, the custom-property overrides alone don't reach it. */
+  color: var(--color-text);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-display-md);
+}
+
+.logo span {
+  color: var(--color-peach);
+}
+
+.tags {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-body-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.meta {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-faint);
+}
+
+.meta a:hover {
+  color: var(--color-peach);
+}

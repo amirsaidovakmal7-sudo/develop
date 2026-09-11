@@ -1,0 +1,61 @@
+.projects {
+  position: relative;
+  background: var(--color-bg);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-lg);
+  font-weight: 700;
+  margin-top: var(--space-sm);
+  max-width: 16ch;
+}
+
+.intro {
+  color: var(--color-text-muted);
+  max-width: 42ch;
+}
+
+.filters {
+  display: flex;
+  gap: var(--space-2xs);
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  font-family: var(--font-display);
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 1rem;
+  transition:
+    color var(--dur-ui) var(--ease-out),
+    border-color var(--dur-ui) var(--ease-out),
+    background-color var(--dur-ui) var(--ease-out);
+}
+
+.filterBtn:hover {
+  color: var(--color-text);
+}
+
+.filterBtn.active {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-on-ink);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,230 @@
+.card {
+  position: relative;
+  padding-block: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.index {
+  font-family: var(--font-display);
+  font-size: var(--fs-body-sm);
+  color: var(--color-indigo);
+  margin-bottom: var(--space-sm);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-display-lg);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+.subtitle {
+  font-size: var(--fs-body-lg);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2xs);
+}
+
+.tag {
+  display: inline-block;
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.description {
+  margin-top: var(--space-md);
+  color: var(--color-text-muted);
+  max-width: 52ch;
+}
+
+.features {
+  list-style: none;
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.features li {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-muted);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-indigo);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.viewCase {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-body-sm);
+  border-bottom: 1px solid var(--color-border-strong);
+  padding-bottom: 0.25rem;
+  transition: border-color var(--dur-ui) var(--ease-out), color var(--dur-ui) var(--ease-out);
+}
+
+.viewCase:hover {
+  color: var(--color-indigo);
+  border-color: var(--color-indigo);
+}
+
+.openSite {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-faint);
+}
+
+.openSite:hover {
+  color: var(--color-text);
+}
+
+.media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+}
+
+.media img,
+.media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-cinematic) var(--ease-out);
+}
+
+.media:hover img,
+.media:hover video {
+  transform: scale(1.04);
+}
+
+/* ── split: image + text side by side ── */
+.split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.split .media {
+  aspect-ratio: 4 / 3;
+}
+
+.splitReverse {
+  composes: split;
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.splitReverse .textCol {
+  order: -1;
+}
+
+/* ── full: full-width media with title overlapping the container edge ── */
+.full .media {
+  aspect-ratio: 16 / 8;
+  margin-bottom: var(--space-lg);
+}
+
+.full .title {
+  font-size: var(--fs-hero);
+  max-width: none;
+}
+
+/* ── overlap: two offset stacked screenshots ── */
+.overlapWrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.overlapMedia {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+
+.overlapMedia .media:first-child {
+  position: absolute;
+  inset: 0 15% 15% 0;
+  z-index: 1;
+}
+
+.overlapMedia .media:last-child {
+  position: absolute;
+  inset: 15% 0 0 15%;
+  z-index: 2;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ── video: video + technical metadata table ── */
+.videoWrap {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.videoWrap .media {
+  aspect-ratio: 9 / 16;
+  max-width: 320px;
+}
+
+.metaTable {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem var(--space-md);
+  margin-top: var(--space-lg);
+  font-size: var(--fs-body-sm);
+}
+
+.metaTable dt {
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  font-size: var(--fs-label);
+}
+
+.metaTable dd {
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 860px) {
+  .split,
+  .splitReverse,
+  .overlapWrap,
+  .videoWrap {
+    grid-template-columns: 1fr;
+  }
+  .splitReverse .textCol {
+    order: 0;
+  }
+  .full .title {
+    font-size: var(--fs-display-lg);
+  }
+  .videoWrap .media {
+    max-width: 220px;
+  }
+}

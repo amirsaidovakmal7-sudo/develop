@@ -1,0 +1,186 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(17, 18, 20, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 18, 20, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 65% at 55% 45%, black 20%, transparent 78%);
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.inner {
+  position: relative;
+  z-index: var(--z-content);
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding: calc(var(--space-2xl) + 64px) var(--space-gutter) var(--space-2xl);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 0.9rem;
+  margin-bottom: var(--space-lg);
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-peach);
+  box-shadow: 0 0 10px var(--color-peach-dim);
+}
+
+.role {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fs-display-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.mission {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text);
+  max-width: 18ch;
+  overflow-wrap: anywhere;
+}
+
+.mission .line {
+  display: block;
+  overflow: hidden;
+}
+
+.mission .gradient {
+  background: linear-gradient(100deg, var(--color-indigo) 10%, var(--color-lavender) 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--color-indigo);
+  margin-top: var(--space-md);
+}
+
+.description {
+  font-size: var(--fs-body-lg);
+  color: var(--color-text-muted);
+  max-width: 46ch;
+  margin-top: var(--space-md);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-lg);
+}
+
+.btnPrimary,
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-body-sm);
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--radius-pill);
+  transition:
+    transform var(--dur-ui) var(--ease-out),
+    box-shadow var(--dur-ui) var(--ease-out),
+    border-color var(--dur-ui) var(--ease-out);
+}
+
+.btnPrimary {
+  background: var(--color-text);
+  color: var(--color-on-ink);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-indigo);
+}
+
+.btnGhost {
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text);
+}
+
+.btnGhost:hover {
+  border-color: var(--color-indigo);
+  transform: translateY(-2px);
+}
+
+.scrollHint {
+  position: absolute;
+  left: var(--space-gutter);
+  bottom: var(--space-lg);
+  z-index: var(--z-content);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--color-text-faint), transparent);
+}
+
+@media (max-width: 640px) {
+  .mission {
+    max-width: 12ch;
+    font-size: clamp(2.4rem, 14vw, 3.4rem);
+  }
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .scrollHint {
+    display: none;
+  }
+}

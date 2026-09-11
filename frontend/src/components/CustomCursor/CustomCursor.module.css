@@ -1,0 +1,59 @@
+.dot,
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  will-change: transform;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--color-indigo);
+  transition: opacity var(--dur-ui) var(--ease-out);
+}
+
+.ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    width var(--dur-ui) var(--ease-out),
+    height var(--dur-ui) var(--ease-out),
+    margin var(--dur-ui) var(--ease-out),
+    border-color var(--dur-ui) var(--ease-out),
+    background-color var(--dur-ui) var(--ease-out);
+}
+
+.ring.active {
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border-color: var(--color-indigo);
+  background: rgba(91, 95, 239, 0.08);
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--color-indigo);
+  opacity: 0;
+  transition: opacity var(--dur-ui) var(--ease-out);
+  white-space: nowrap;
+}
+
+.ring.active .label {
+  opacity: 1;
+}

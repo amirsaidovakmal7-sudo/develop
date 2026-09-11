@@ -1,0 +1,202 @@
+/*
+  Deliberate dark segment (п.63): the only place the page leaves the warm
+  light canvas — the closing crescendo the Process pipeline collapses into
+  (п.46) and the page's strongest visual moment (п.30). Shared tokens are
+  overridden locally so every var(--color-text)/--color-border/etc. below
+  and in Footer.module.css resolves to its on-ink counterpart automatically.
+*/
+.contact {
+  position: relative;
+  background: var(--color-ink);
+  overflow: hidden;
+  --color-text: var(--color-on-ink);
+  --color-text-muted: var(--color-on-ink-muted);
+  --color-text-faint: var(--color-on-ink-faint);
+  --color-border: var(--color-on-ink-border);
+  --color-border-strong: var(--color-on-ink-border-strong);
+  --color-surface: var(--color-on-ink-surface);
+  /* The custom-property overrides above only affect descendants that
+     explicitly read var(--color-text) — plain `color` is inherited from
+     body's already-resolved (light-theme) value otherwise, which is why
+     this needs its own explicit declaration. */
+  color: var(--color-text);
+}
+
+.glow {
+  position: absolute;
+  bottom: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  max-width: 900px;
+  height: 60vh;
+  background:
+    radial-gradient(ellipse at 32% 50%, var(--color-indigo-dim), transparent 60%),
+    radial-gradient(ellipse at 68% 50%, var(--color-peach-dim), transparent 60%);
+  pointer-events: none;
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+.title span {
+  display: block;
+}
+
+.subtitle {
+  margin-top: var(--space-md);
+  font-size: var(--fs-body-lg);
+  color: var(--color-text-muted);
+  max-width: 42ch;
+}
+
+.telegramCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding: var(--space-md) var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--dur-ui) var(--ease-out), transform var(--dur-ui) var(--ease-out);
+}
+
+.telegramCard:hover {
+  border-color: var(--color-peach);
+  transform: translateY(-2px);
+}
+
+.telegramIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-peach-dim);
+  color: var(--color-peach);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.telegramTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.telegramHandle {
+  color: var(--color-text-faint);
+  font-size: var(--fs-body-sm);
+}
+
+.formCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.formTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-display-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.field {
+  margin-bottom: var(--space-md);
+}
+
+.field label {
+  display: block;
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-2xs);
+}
+
+.field input {
+  width: 100%;
+  background: var(--color-ink-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  transition: border-color var(--dur-ui) var(--ease-out);
+}
+
+.field input:focus-visible {
+  border-color: var(--color-peach);
+  outline: none;
+}
+
+.field input.error {
+  border-color: #ff6767;
+}
+
+.fieldError {
+  color: #ff8b8b;
+  font-size: var(--fs-body-sm);
+  margin-top: 0.35rem;
+}
+
+.submit {
+  width: 100%;
+  background: var(--color-text);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 0.95rem;
+  border-radius: var(--radius-pill);
+  transition: transform var(--dur-ui) var(--ease-out), box-shadow var(--dur-ui) var(--ease-out), opacity var(--dur-ui) var(--ease-out);
+}
+
+.submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-peach);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.final {
+  margin-top: var(--space-3xl);
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-display-lg);
+  line-height: var(--lh-tight);
+  color: var(--color-text-faint);
+}
+
+.final span {
+  display: block;
+}
+
+.final .accent {
+  background: linear-gradient(100deg, var(--color-indigo), var(--color-peach));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,137 @@
+.process {
+  position: relative;
+  background: var(--color-bg-muted);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-md);
+  font-weight: 700;
+  margin-top: var(--space-sm);
+}
+
+.intro {
+  margin-top: var(--space-sm);
+  color: var(--color-text-muted);
+  max-width: 52ch;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+}
+
+.track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-border);
+}
+
+.trackFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: calc(var(--progress, 0) * 100%);
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-indigo));
+  transition: width 60ms linear;
+}
+
+.step {
+  flex: 1;
+  position: relative;
+  padding-top: var(--space-lg);
+}
+
+.dot {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-bg-soft);
+  border: 2px solid var(--color-border-strong);
+  transition: border-color var(--dur-content) var(--ease-out), background-color var(--dur-content) var(--ease-out);
+}
+
+.step.active .dot {
+  border-color: var(--color-cyan);
+  background: var(--color-cyan);
+  box-shadow: 0 0 12px var(--color-cyan);
+}
+
+.num {
+  font-family: var(--font-display);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-faint);
+  transition: color var(--dur-content) var(--ease-out);
+}
+
+.step.active .num {
+  color: var(--color-cyan);
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-display-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2xs);
+  transition: color var(--dur-content) var(--ease-out);
+}
+
+.step.active .stepTitle {
+  color: var(--color-text);
+}
+
+.stepText {
+  margin-top: var(--space-xs);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-faint);
+  max-width: 30ch;
+}
+
+.note {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-faint);
+  max-width: 70ch;
+}
+
+@media (max-width: 860px) {
+  .timeline {
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding-top: 0;
+    padding-left: var(--space-lg);
+  }
+  .track {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 2px;
+    height: auto;
+  }
+  .trackFill {
+    width: 2px;
+    height: calc(var(--progress, 0) * 100%);
+  }
+  .step {
+    padding-top: 0;
+    padding-left: var(--space-lg);
+  }
+  .dot {
+    top: 4px;
+    left: calc(-1 * var(--space-lg) - 5px);
+  }
+}
