@@ -1,31 +1,52 @@
 .switcher {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 2px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-1);
+  overflow: hidden;
+  flex: none;
 }
 
-.btn {
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--color-text-muted);
-  padding: 0.35rem 0.65rem;
-  border-radius: var(--radius-pill);
+.option {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  padding: 7px 9px;
   transition:
-    background-color var(--dur-ui) var(--ease-out),
-    color var(--dur-ui) var(--ease-out);
+    color var(--t-1) var(--e-out),
+    background var(--t-1) var(--e-out);
 }
 
-.btn:hover {
-  color: var(--color-text);
+.option + .option {
+  border-left: 1px solid var(--line);
 }
 
-.btn.active {
-  background: var(--color-text);
-  color: var(--color-on-ink);
+.option:hover {
+  color: var(--text);
+  background: var(--ink-600);
+}
+
+.active {
+  color: var(--ink-900);
+  background: var(--brass);
+}
+
+.active:hover {
+  color: var(--ink-900);
+  background: var(--brass-hi);
+}
+
+/* Touch: every option becomes a real 44px target. On a phone the switcher
+   lives in the menu panel, where there is room for it. */
+@media (pointer: coarse) {
+  .option {
+    min-height: 44px;
+    min-width: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+  }
 }

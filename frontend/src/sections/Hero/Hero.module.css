@@ -1,196 +1,207 @@
 .hero {
   position: relative;
+  z-index: var(--z-content);
   min-height: 100svh;
   display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: var(--color-bg);
+  align-items: flex-end;
+  padding-block: 128px clamp(48px, 8vh, 96px);
 }
 
 .grid {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(to right, rgba(17, 18, 20, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(17, 18, 20, 0.045) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 65% at 55% 45%, black 20%, transparent 78%);
-}
-
-.grain {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.035;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.inner {
-  position: relative;
-  z-index: var(--z-content);
   width: 100%;
-  max-width: 1320px;
-  margin-inline: auto;
-  padding: calc(var(--space-2xl) + 64px) var(--space-gutter) var(--space-2xl);
+  display: grid;
+  /* Matches the armature's 61.8 / 38.2 split. */
+  grid-template-columns: minmax(0, 0.618fr) minmax(0, 0.382fr);
+  align-items: end;
+  gap: var(--s-7);
 }
 
-.badge {
-  display: inline-flex;
+/* ── Status line ── */
+.status {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-2xs);
+  gap: 6px 10px;
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  padding: 0.4rem 0.9rem;
-  margin-bottom: var(--space-lg);
+  color: var(--text-2);
+  margin-bottom: var(--s-6);
 }
 
-.badgeDot {
+.dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-peach);
-  box-shadow: 0 0 10px var(--color-peach-dim);
+  background: var(--signal);
+  flex: none;
+  box-shadow: 0 0 0 3px rgba(100, 211, 156, 0.14);
 }
 
 .role {
-  display: block;
+  color: var(--text-3);
+}
+
+/* ── Display statement ── */
+.statement {
   font-family: var(--font-display);
-  font-size: var(--fs-display-sm);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-sm);
+  font-weight: 400;
+  font-size: var(--fs-hero-inline);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-hero);
+  color: var(--text);
+  margin-bottom: var(--s-6);
 }
 
-.mission {
-  font-family: var(--font-display);
-  font-size: var(--fs-hero);
-  font-weight: 700;
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-  color: var(--color-text);
-  max-width: 18ch;
-  overflow-wrap: anywhere;
+/* The closing line carries the only display-scale accent on the page. */
+.accentLine {
+  color: var(--brass);
 }
 
-.mission .line {
-  display: block;
-  overflow: hidden;
-}
-
-.mission .gradient {
-  background: linear-gradient(100deg, var(--color-indigo) 10%, var(--color-lavender) 90%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.tagline {
-  font-family: var(--font-display);
-  font-size: var(--fs-body-sm);
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--color-indigo);
-  margin-top: var(--space-md);
-}
-
-.description {
-  font-size: var(--fs-body-lg);
-  color: var(--color-text-muted);
-  max-width: 46ch;
-  margin-top: var(--space-md);
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--text-2);
+  max-width: min(52ch, var(--measure));
+  margin-bottom: var(--s-6);
 }
 
 .actions {
   display: flex;
-  gap: var(--space-md);
   flex-wrap: wrap;
-  margin-top: var(--space-lg);
+  gap: var(--s-3);
 }
 
-.btnPrimary,
-.btnGhost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--fs-body-sm);
-  padding: 0.9rem 1.6rem;
-  border-radius: var(--radius-pill);
-  transition:
-    transform var(--dur-ui) var(--ease-out),
-    box-shadow var(--dur-ui) var(--ease-out),
-    border-color var(--dur-ui) var(--ease-out);
+/* ── Spec column: real, indexable facts in the engine voice ── */
+.spec {
+  border-top: 1px solid var(--line);
+  padding-top: var(--s-4);
 }
 
-.btnPrimary {
-  background: var(--color-text);
-  color: var(--color-on-ink);
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-block: 10px;
+  border-bottom: 1px solid var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
 }
 
-.btnPrimary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow-indigo);
+.specKey {
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.btnGhost {
-  border: 1px solid var(--color-border-strong);
-  color: var(--color-text);
+.specValue {
+  color: var(--text-2);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
-.btnGhost:hover {
-  border-color: var(--color-indigo);
-  transform: translateY(-2px);
-}
-
-.arrow {
-  display: inline-block;
-  transition: transform var(--dur-ui) var(--ease-out);
-}
-
-.btnPrimary:hover .arrow,
-.btnGhost:hover .arrow {
-  transform: translateX(4px);
-}
-
-.scrollHint {
+/* ── Scroll hint ── */
+.hintWrap {
   position: absolute;
-  left: var(--space-gutter);
-  bottom: var(--space-lg);
-  z-index: var(--z-content);
+  inset: auto 0 clamp(16px, 3vh, 28px);
+  display: flex;
+  justify-content: center;
+}
+
+.hint {
   display: flex;
   align-items: center;
-  gap: var(--space-2xs);
+  gap: 10px;
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
-  color: var(--color-text-faint);
+  color: var(--text-3);
 }
 
-.scrollLine {
-  width: 1px;
-  height: 28px;
-  background: linear-gradient(to bottom, var(--color-text-faint), transparent);
+.hintLine {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, var(--brass), transparent);
+  animation: sweep 2.8s var(--e-inout) infinite;
+  transform-origin: left center;
 }
 
-@media (max-width: 640px) {
-  .mission {
-    max-width: 12ch;
-    font-size: clamp(2.4rem, 14vw, 3.4rem);
+@keyframes sweep {
+  0%,
+  100% {
+    transform: scaleX(0.35);
+    opacity: 0.5;
   }
-  .actions {
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hintLine {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+
+  .spec {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    min-height: auto;
+    padding-block: 124px var(--s-8);
+    align-items: flex-start;
+  }
+
+  /* Four full-width rows made the spec a long tail under the CTAs. As a
+     2x2 block it is one glance instead of four. */
+  .spec {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 var(--s-4);
+    max-width: none;
+  }
+
+  .specRow {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
+    gap: 2px;
+    padding-block: var(--s-3);
   }
-  .scrollHint {
+
+  .specValue {
+    text-align: left;
+    color: var(--text);
+  }
+
+  .hintWrap {
     display: none;
+  }
+
+  /* The role clause takes its own line rather than being squeezed into a
+     second column beside the availability badge. */
+  .role {
+    flex-basis: 100%;
+    margin-left: 16px;
+  }
+
+  .actions > * {
+    flex: 1 1 100%;
   }
 }

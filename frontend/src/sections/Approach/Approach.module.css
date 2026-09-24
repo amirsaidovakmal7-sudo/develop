@@ -1,0 +1,185 @@
+.statementRow {
+  display: grid;
+  grid-template-columns: minmax(0, 0.618fr) minmax(0, 0.382fr);
+  gap: var(--s-7);
+  align-items: end;
+  padding-bottom: var(--s-8);
+  border-bottom: 1px solid var(--line);
+}
+
+.statement {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+.paragraph {
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--text-2);
+  max-width: var(--measure);
+}
+
+.telegram {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 8px;
+  margin-top: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--brass);
+  border-bottom: 1px solid var(--brass-line);
+  padding-bottom: 3px;
+  transition: color var(--t-1) var(--e-out);
+}
+
+.telegram:hover,
+.telegram:focus-visible {
+  color: var(--brass-hi);
+}
+
+/* ── Capability layers ────────────────────────────────────────────────
+   Read top to bottom they are the path the copy claims: interface, logic,
+   data, automation, server. The list is literally that descent. */
+.layersHead {
+  margin-top: var(--s-8);
+  margin-bottom: var(--s-5);
+}
+
+.layers {
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+/* The row follows the page's own 38.2 / 61.8 split rather than pinning the
+   tools to the far right: on a wide monitor a 1fr track left the layer name
+   and its tools a thousand pixels apart with nothing in between, and the
+   last label fell off the end of the column. */
+.layer {
+  display: grid;
+  grid-template-columns:
+    56px
+    minmax(0, calc((var(--col-max) - var(--gutter) * 2) * 0.382 - 56px))
+    minmax(0, 1fr);
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid var(--line-soft);
+  transition: background var(--t-2) var(--e-out);
+}
+
+.layer:hover,
+.layer:focus-within {
+  background: linear-gradient(to right, var(--brass-dim), transparent 62%);
+}
+
+.layerNum {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.layer:hover .layerNum,
+.layer:focus-within .layerNum {
+  color: var(--brass);
+}
+
+.layerName {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.5rem);
+  line-height: 1.15;
+  letter-spacing: var(--ls-title);
+  color: var(--text);
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3) var(--s-5);
+  /* Starts on the split line and runs rightwards, so the tools read as one
+     band beginning where every other right-hand column begins. */
+  justify-content: flex-start;
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  transition: color var(--t-1) var(--e-out);
+}
+
+.layer:hover .tool,
+.layer:focus-within .tool {
+  color: var(--text-2);
+}
+
+.toolIcon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: 0.5;
+  transition: opacity var(--t-1) var(--e-out);
+}
+
+.layer:hover .toolIcon,
+.layer:focus-within .toolIcon {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .statementRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-5);
+    align-items: start;
+    padding-bottom: var(--s-6);
+  }
+
+  /* The desktop rhythm left ~250px of nothing between the Telegram link and
+     the next mark on a phone. */
+  .layersHead {
+    margin-top: var(--s-6);
+    margin-bottom: var(--s-4);
+  }
+
+  .layer {
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: baseline;
+    gap: var(--s-2) var(--s-4);
+    padding: var(--s-4) 0;
+  }
+
+  .tools {
+    grid-column: 2;
+    justify-content: flex-start;
+    gap: var(--s-3);
+  }
+}
+
+/* The tool names stay. Hiding them below 480px left a row of unlabelled
+   brand marks, which tells a phone reader nothing; wrapping costs a line
+   and keeps the meaning. */
+@media (max-width: 560px) {
+  .tools {
+    gap: var(--s-2) var(--s-4);
+  }
+
+  .tool {
+    font-size: 0.625rem;
+  }
+
+  .toolIcon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.85;
+  }
+}

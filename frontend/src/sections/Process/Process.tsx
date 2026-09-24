@@ -1,71 +1,94 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
 import { useTranslation } from '../../i18n';
+import type { Translations } from '../../i18n/ru';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
-import { ensureGsapReady, ScrollTrigger } from '../../lib/gsapSetup';
+import { Lines, Settle } from '../../components/Motion/Motion';
+import { SectionMark } from '../../components/SectionMark/SectionMark';
 import styles from './Process.module.css';
 
-const STEP_KEYS = [
-  { num: 'step1Num', title: 'step1Title', text: 'step1Text' },
-  { num: 'step2Num', title: 'step2Title', text: 'step2Text' },
-  { num: 'step3Num', title: 'step3Title', text: 'step3Text' },
-  { num: 'step4Num', title: 'step4Title', text: 'step4Text' },
-  { num: 'step5Num', title: 'step5Title', text: 'step5Text' },
-] as const;
+type ProcessDict = Translations['process'];
+const STEPS = [1, 2, 3, 4, 5] as const;
 
-/** TECH_TASK_REDISIGN.md п.23: horizontal timeline that fills as the user scrolls, driven by GSAP ScrollTrigger. */
+/**
+ * Five steps from brief to deploy.
+ *
+ * The rail fills with the reader's position through the section — one
+ * rAF-throttled scroll read writing a transform, no per-frame React state
+ * beyond the node count. With reduced motion the rail is simply drawn full,
+ * so the sequence still reads as a path.
+ */
 export function Process() {
   const { t } = useTranslation();
-  const reducedMotion = usePrefersReducedMotion();
-  const timelineRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
+  const reduced = usePrefersReducedMotion();
+  const trackRef = useRef<HTMLDivElement>(null);
+  const fillRef = useRef<HTMLSpanElement>(null);
+  const [scrolled, setScrolled] = useState(0);
+  // With reduced motion the rail is simply drawn full: the sequence still
+  // reads as a path, it just does not follow the reader.
+  const reached = reduced ? STEPS.length : scrolled;
 
   useEffect(() => {
-    if (reducedMotion || !timelineRef.current) {
-      setProgress(1);
+    if (reduced) {
+      if (fillRef.current) fillRef.current.style.transform = 'scaleY(1)';
       return;
     }
-    ensureGsapReady();
-    const trigger = ScrollTrigger.create({
-      trigger: timelineRef.current,
-      start: 'top 75%',
-      end: 'bottom 60%',
-      scrub: 0.4,
-      onUpdate: (self) => setProgress(self.progress),
-    });
-    return () => trigger.kill();
-  }, [reducedMotion]);
 
-  const activeIndex = Math.min(STEP_KEYS.length - 1, Math.floor(progress * STEP_KEYS.length));
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const el = trackRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      // Fills between the rail entering the lower third and leaving the top.
+      const anchor = window.innerHeight * 0.62;
+      const progress = Math.min(1, Math.max(0, (anchor - rect.top) / Math.max(rect.height, 1)));
+      if (fillRef.current) fillRef.current.style.transform = `scaleY(${progress})`;
+      setScrolled(Math.round(progress * STEPS.length));
+    };
+
+    const onScroll = () => {
+      if (!raf) raf = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) window.cancelAnimationFrame(raf);
+    };
+  }, [reduced]);
 
   return (
-    <section id="process" className={`${styles.process} section`}>
-      <div className="container">
-        <motion.div
-          initial={reducedMotion ? undefined : { opacity: 0, y: 20 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="section-label">{t.process.label}</span>
-          <h2 className={styles.title}>{t.process.title}</h2>
-          <p className={styles.intro}>{t.process.intro}</p>
-        </motion.div>
+    <section id="process" className="section">
+      <div className="shell">
+        <SectionMark index="04" label={t.process.label} />
 
-        <div className={styles.timeline} ref={timelineRef} style={{ ['--progress' as string]: progress }}>
-          <div className={styles.track} />
-          <div className={styles.trackFill} />
-          {STEP_KEYS.map((step, i) => (
-            <div key={step.num} className={`${styles.step} ${i <= activeIndex ? styles.active : ''}`}>
-              <span className={styles.dot} />
-              <div className={styles.num}>{t.process[step.num]}</div>
-              <div className={styles.stepTitle}>{t.process[step.title]}</div>
-              <p className={styles.stepText}>{t.process[step.text]}</p>
-            </div>
-          ))}
+        <div className={styles.head}>
+          <Lines as="h2" className={styles.title} lines={[t.process.title]} />
+          <Settle className={styles.intro} as="p" delay={120}>
+            {t.process.intro}
+          </Settle>
         </div>
 
-        <p className={styles.note}>{t.process.note}</p>
+        <div className={styles.track} ref={trackRef}>
+          <span className={styles.rail} aria-hidden="true" />
+          <span ref={fillRef} className={styles.fill} aria-hidden="true" />
+
+          <ol className={styles.steps}>
+            {STEPS.map((n, i) => (
+              <li key={n} className={styles.step}>
+                <span className={`${styles.node} ${i < reached ? styles.nodeReached : ''}`} aria-hidden="true" />
+                <div>
+                  <span className={styles.stepNum}>{t.process[`step${n}Num` as keyof ProcessDict]}</span>
+                  <h3 className={styles.stepTitle}>{t.process[`step${n}Title` as keyof ProcessDict]}</h3>
+                </div>
+                <p className={styles.stepText}>{t.process[`step${n}Text` as keyof ProcessDict]}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+
       </div>
     </section>
   );

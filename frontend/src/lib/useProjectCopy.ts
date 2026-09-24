@@ -4,7 +4,7 @@ import type { Translations } from '../i18n/ru';
 
 type ProjectsDict = Translations['projects'];
 
-/** Reads `projects.<i18nKey>Title` etc. for a given project — keeps ProjectCard/Viewer copy-agnostic. */
+/** Reads `projects.<i18nKey>Title` etc. for a given project — keeps ProjectShowcase/Viewer copy-agnostic. */
 export function useProjectCopy(project: ProjectDefinition) {
   const { t } = useTranslation();
   const p = t.projects as unknown as Record<string, string>;

@@ -1,0 +1,142 @@
+/*
+  This section replaced a wall of technology chips. That block restated the
+  tools already listed — with icons — in the capability rows one screen
+  above it, and told a prospective client nothing they could act on. These
+  four facts are what people actually ask before they commit, and they were
+  previously buried in a small note at the end of the process section.
+*/
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.618fr) minmax(0, 0.382fr);
+  align-items: end;
+  gap: var(--s-7);
+  margin-bottom: var(--s-8);
+}
+
+.title {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+.intro {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--text-2);
+  max-width: 44ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+
+.item {
+  position: relative;
+  padding: var(--s-6) var(--s-5) var(--s-6) 0;
+  border-right: 1px solid var(--line-soft);
+}
+
+.item:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.item:not(:first-child) {
+  padding-left: var(--s-5);
+}
+
+/* The brass tick marks the column the way it marks an active row in the
+   work index — the same accent doing the same job. */
+.item::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 28px;
+  height: 1px;
+  background: var(--brass);
+}
+
+.item:not(:first-child)::before {
+  left: var(--s-5);
+}
+
+.num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: var(--s-4);
+}
+
+.itemTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-subtitle);
+  line-height: 1.15;
+  letter-spacing: var(--ls-title);
+  color: var(--text);
+  margin-bottom: var(--s-3);
+}
+
+.itemText {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+@media (max-width: 1024px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-4);
+    margin-bottom: var(--s-7);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .item {
+    padding: var(--s-5) var(--s-5) var(--s-5) 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .item:nth-child(2n) {
+    border-right: 0;
+    padding-right: 0;
+  }
+
+  .item:nth-child(2n + 1)::before {
+    left: 0;
+  }
+
+  .item:nth-child(n + 3) {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .item,
+  .item:last-child,
+  .item:not(:first-child) {
+    padding: var(--s-5) 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .item::before,
+  .item:not(:first-child)::before {
+    left: 0;
+  }
+
+  .item:last-child {
+    border-bottom: 0;
+  }
+}

@@ -1,0 +1,99 @@
+/*
+  Two buttons, and only two. The brass fill is reserved for the single
+  action that matters on this site — starting a project — so it never has
+  to compete with itself. Everything else is a hairline ghost.
+*/
+.base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border-radius: var(--r-1);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  transition:
+    background var(--t-1) var(--e-out),
+    border-color var(--t-1) var(--e-out),
+    color var(--t-1) var(--e-out),
+    transform var(--t-1) var(--e-out);
+}
+
+.base:active {
+  transform: translateY(1px);
+}
+
+.base:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+/* The arrow advances on hover — the only motion a button makes. */
+.arrow {
+  display: inline-block;
+  transition: transform var(--t-2) var(--e-out);
+}
+
+.base:hover:not(:disabled) .arrow,
+.base:focus-visible .arrow {
+  transform: translateX(4px);
+}
+
+/* ── Primary ── */
+.primary {
+  background: var(--brass);
+  color: var(--ink-900);
+  border-color: var(--brass);
+}
+
+.primary:hover:not(:disabled),
+.primary:focus-visible {
+  background: var(--brass-hi);
+  border-color: var(--brass-hi);
+}
+
+/* ── Ghost ── */
+.ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.ghost:hover:not(:disabled),
+.ghost:focus-visible {
+  border-color: var(--brass);
+  color: var(--brass-hi);
+  background: var(--brass-dim);
+}
+
+.block {
+  width: 100%;
+}
+
+/* Submitting: the label swaps and the fill breathes, so the button reads as
+   busy without a spinner that would sit outside the type system. */
+.busy {
+  animation: pulse 1.4s var(--e-inout) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.62;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .busy {
+    animation: none;
+  }
+}

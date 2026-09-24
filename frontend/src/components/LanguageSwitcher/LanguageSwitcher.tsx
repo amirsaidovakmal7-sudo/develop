@@ -12,15 +12,16 @@ export function LanguageSwitcher() {
 
   return (
     <div className={styles.switcher} role="group" aria-label={t.common.ariaLangSwitch}>
-      {LOCALES.map((loc) => (
+      {LOCALES.map((code) => (
         <button
-          key={loc}
+          key={code}
           type="button"
-          className={`${styles.btn} ${loc === locale ? styles.active : ''}`}
-          aria-pressed={loc === locale}
-          onClick={() => setLocale(loc)}
+          lang={code}
+          className={`${styles.option} ${locale === code ? styles.active : ''}`}
+          aria-pressed={locale === code}
+          onClick={() => setLocale(code)}
         >
-          {t.common[LABEL_KEY[loc]]}
+          {t.common[LABEL_KEY[code]]}
         </button>
       ))}
     </div>

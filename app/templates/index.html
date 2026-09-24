@@ -36,12 +36,18 @@
     </script>
     <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
     <meta name="csrf-token" content="{{ csrf_token }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+    {% comment %}Paints the canvas before the bundle's CSS arrives, so a slow
+    connection never shows a white flash in front of a near-black site.{% endcomment %}
+    <style>html,body{background:#080b12;color:#eaeef6;margin:0}</style>
+    {% comment %}Fonts, stylesheet and the module entry. Unbounded = display,
+    Onest = reading text, JetBrains Mono = labels; all three are self-hosted
+    (frontend/scripts/gen-fonts.mjs) and all three ship Cyrillic, which the RU
+    default and the UZ/EN switch both depend on. Module scripts are deferred,
+    so putting the whole block in <head> costs nothing and lets the browser
+    find the CSS — and therefore the @font-face rules — straight away.{% endcomment %}
+    {% vite_asset_tags %}
 </head>
 <body>
 <div id="root"></div>
-{% vite_asset_tags %}
 </body>
 </html>

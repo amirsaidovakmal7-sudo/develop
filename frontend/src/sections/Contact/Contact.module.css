@@ -1,203 +1,259 @@
-/*
-  Deliberate dark segment (п.63): the only place the page leaves the warm
-  light canvas — the closing crescendo the Process pipeline collapses into
-  (п.46) and the page's strongest visual moment (п.30). Shared tokens are
-  overridden locally so every var(--color-text)/--color-border/etc. below
-  and in Footer.module.css resolves to its on-ink counterpart automatically.
-*/
 .contact {
   position: relative;
-  background: var(--color-ink);
-  overflow: hidden;
-  --color-text: var(--color-on-ink);
-  --color-text-muted: var(--color-on-ink-muted);
-  --color-text-faint: var(--color-on-ink-faint);
-  --color-border: var(--color-on-ink-border);
-  --color-border-strong: var(--color-on-ink-border-strong);
-  --color-surface: var(--color-on-ink-surface);
-  /* The custom-property overrides above only affect descendants that
-     explicitly read var(--color-text) — plain `color` is inherited from
-     body's already-resolved (light-theme) value otherwise, which is why
-     this needs its own explicit declaration. */
-  color: var(--color-text);
 }
 
-.glow {
-  position: absolute;
-  bottom: -30%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90vw;
-  max-width: 900px;
-  height: 60vh;
-  background:
-    radial-gradient(ellipse at 32% 50%, var(--color-indigo-dim), transparent 60%),
-    radial-gradient(ellipse at 68% 50%, var(--color-peach-dim), transparent 60%);
-  pointer-events: none;
-}
-
-.grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-2xl);
-  align-items: start;
+.head {
+  margin-bottom: var(--s-8);
 }
 
 .title {
-  font-family: var(--font-display);
   font-size: var(--fs-hero);
-  font-weight: 700;
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-}
-
-.title span {
-  display: block;
-  overflow: hidden;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-hero);
+  margin-bottom: var(--s-5);
 }
 
 .subtitle {
-  margin-top: var(--space-md);
-  font-size: var(--fs-body-lg);
-  color: var(--color-text-muted);
-  max-width: 42ch;
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 46ch;
 }
 
-.telegramCard {
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.382fr) minmax(0, 0.618fr);
+  gap: var(--s-7);
+  align-items: start;
+}
+
+/* ── Direct line ── */
+.aside {
+  border-top: 1px solid var(--line);
+  padding-top: var(--s-5);
+}
+
+.telegram {
   display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-  padding: var(--space-md) var(--space-lg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  transition: border-color var(--dur-ui) var(--ease-out), transform var(--dur-ui) var(--ease-out);
+  align-items: flex-start;
+  gap: var(--s-4);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--line-soft);
+  transition: color var(--t-1) var(--e-out);
 }
 
-.telegramCard:hover {
-  border-color: var(--color-peach);
-  transform: translateY(-2px);
+.telegramArrow {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  color: var(--brass);
+  line-height: 1;
+  transition: transform var(--t-2) var(--e-out);
 }
 
-.telegramIcon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--color-peach-dim);
-  color: var(--color-peach);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.telegram:hover .telegramArrow,
+.telegram:focus-visible .telegramArrow {
+  transform: translate(3px, -3px);
 }
 
 .telegramTitle {
+  display: block;
   font-family: var(--font-display);
-  font-weight: 600;
+  font-size: var(--fs-subtitle);
+  line-height: 1.2;
+  letter-spacing: var(--ls-title);
+  color: var(--text);
 }
 
 .telegramHandle {
-  color: var(--color-text-faint);
-  font-size: var(--fs-body-sm);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  margin-top: 6px;
 }
 
-.formCard {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+.asideRow {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-block: var(--s-3);
+  border-bottom: 1px solid var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-3);
 }
 
-.formTitle {
+.asideValue {
+  color: var(--text-2);
+  text-align: right;
+}
+
+/* ── Order panel ───────────────────────────────────────────────────── */
+.panel {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--r-2);
+  background: var(--ink-700);
+  padding: clamp(24px, 3vw, 40px);
+  overflow: hidden;
+}
+
+/* The rosette returns inside the panel, quietly — the site closes on the
+   same geometry it opened with. */
+.panelMark {
+  position: absolute;
+  right: -28%;
+  bottom: -46%;
+  width: 92%;
+  color: var(--brass);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.panelInner {
+  position: relative;
+}
+
+.panelTitle {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--fs-display-sm);
-  margin-bottom: var(--space-lg);
+  font-size: var(--fs-title);
+  line-height: 1.12;
+  letter-spacing: var(--ls-title);
+  margin-bottom: var(--s-6);
 }
 
 .field {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--s-5);
 }
 
-.field label {
+.label {
   display: block;
-  font-size: var(--fs-body-sm);
-  color: var(--color-text-faint);
-  margin-bottom: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 10px;
 }
 
-.field input {
+/* Inputs are ruled, not boxed — the same hairline vocabulary as the page. */
+.input {
+  display: block;
   width: 100%;
-  background: var(--color-ink-soft);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 0.85rem 1rem;
-  font-size: var(--fs-body);
-  color: var(--color-text);
-  transition: border-color var(--dur-ui) var(--ease-out);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  padding: 10px 0;
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  color: var(--text);
+  transition:
+    border-color var(--t-1) var(--e-out),
+    color var(--t-1) var(--e-out);
 }
 
-.field input:focus-visible {
-  border-color: var(--color-peach);
+.input::placeholder {
+  color: var(--text-3);
+}
+
+.input:hover {
+  border-color: var(--text-3);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--brass);
+}
+
+.input:focus-visible {
   outline: none;
 }
 
-.field input.error {
-  border-color: #ff6767;
+.inputError,
+.inputError:focus {
+  border-color: var(--danger);
 }
 
-.fieldError {
-  color: #ff8b8b;
-  font-size: var(--fs-body-sm);
-  margin-top: 0.35rem;
-}
-
-.submit {
-  width: 100%;
-  background: var(--color-text);
-  color: var(--color-ink);
-  font-family: var(--font-display);
-  font-weight: 700;
-  padding: 0.95rem;
-  border-radius: var(--radius-pill);
-  transition: transform var(--dur-ui) var(--ease-out), box-shadow var(--dur-ui) var(--ease-out), opacity var(--dur-ui) var(--ease-out);
-}
-
-.submit:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow-peach);
-}
-
-.submit:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.final {
-  margin-top: var(--space-3xl);
-  text-align: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: var(--fs-display-lg);
-  line-height: var(--lh-tight);
-  color: var(--color-text-faint);
-}
-
-.final span {
+.error {
   display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--danger);
+  margin-top: 8px;
 }
 
-.final .accent {
-  background: linear-gradient(100deg, var(--color-indigo), var(--color-peach));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+.submitRow {
+  margin-top: var(--s-6);
 }
 
-@media (max-width: 860px) {
+.privacy {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  line-height: 1.6;
+  color: var(--text-3);
+  margin-top: var(--s-4);
+}
+
+/* ── Result state ── */
+.result {
+  position: relative;
+  display: grid;
+  gap: var(--s-4);
+  min-height: 280px;
+  align-content: center;
+  justify-items: start;
+}
+
+.resultMark {
+  width: 56px;
+  height: 56px;
+  color: var(--brass);
+}
+
+.resultMarkError {
+  color: var(--danger);
+}
+
+.resultTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  line-height: 1.12;
+  letter-spacing: var(--ls-title);
+}
+
+.resultText {
+  color: var(--text-2);
+  max-width: 44ch;
+}
+
+/* ── Closing line ── */
+.closing {
+  margin-top: var(--s-10);
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-hero);
+  color: var(--text);
+}
+
+.closingAccent {
+  color: var(--brass);
+}
+
+@media (max-width: 1024px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+
+  /* Form first on a phone: it is the action, the aside is the alternative. */
+  .aside {
+    order: 2;
   }
 }

@@ -1,137 +1,145 @@
-.process {
-  position: relative;
-  background: var(--color-bg-muted);
+/*
+  The process is a path, so it is drawn as one: a single rule down the left
+  that fills as the reader descends, with a girih node at each of the five
+  stages. The progress line is the one piece of scroll-linked motion outside
+  the field itself, and it exists because the content is literally a
+  sequence.
+*/
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.618fr) minmax(0, 0.382fr);
+  gap: var(--s-7);
+  align-items: end;
+  margin-bottom: var(--s-8);
 }
 
 .title {
-  font-family: var(--font-display);
-  font-size: var(--fs-display-md);
-  font-weight: 700;
-  margin-top: var(--space-sm);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
 }
 
 .intro {
-  margin-top: var(--space-sm);
-  color: var(--color-text-muted);
-  max-width: 52ch;
-}
-
-.timeline {
-  position: relative;
-  display: flex;
-  gap: var(--space-md);
-  margin-top: var(--space-2xl);
-  padding-top: var(--space-lg);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--text-2);
+  max-width: 44ch;
 }
 
 .track {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--color-border);
+  position: relative;
+  padding-left: 72px;
 }
 
-.trackFill {
+/* The unfilled rail and the brass fill that follows the reader. */
+.rail,
+.fill {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 2px;
-  width: calc(var(--progress, 0) * 100%);
-  background: linear-gradient(90deg, var(--color-cyan), var(--color-indigo));
-  transition: width 60ms linear;
+  left: 15px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+}
+
+.rail {
+  background: var(--line);
+}
+
+.fill {
+  background: var(--brass);
+  transform-origin: top center;
+  transform: scaleY(0);
+  opacity: 0.8;
+  will-change: transform;
+}
+
+.steps {
+  list-style: none;
+  display: grid;
+  gap: var(--s-8);
 }
 
 .step {
-  flex: 1;
   position: relative;
-  padding-top: var(--space-lg);
+  display: grid;
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 1fr);
+  gap: var(--s-5);
+  align-items: start;
 }
 
-.dot {
+/* Node: a girih rhombus, the same 72°/108° geometry as the field. */
+.node {
   position: absolute;
-  top: -5px;
-  left: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--color-bg-soft);
-  border: 2px solid var(--color-border-strong);
-  transition: border-color var(--dur-content) var(--ease-out), background-color var(--dur-content) var(--ease-out);
+  left: -64px;
+  top: 4px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--line-strong);
+  transform: rotate(45deg);
+  background: var(--ink-800);
+  transition:
+    border-color var(--t-2) var(--e-out),
+    background var(--t-2) var(--e-out);
 }
 
-.step.active .dot {
-  border-color: var(--color-cyan);
-  background: var(--color-cyan);
-  box-shadow: 0 0 12px var(--color-cyan);
+.nodeReached {
+  border-color: var(--brass);
+  background: var(--brass);
 }
 
-.num {
-  font-family: var(--font-display);
-  font-size: var(--fs-body-sm);
-  color: var(--color-text-faint);
-  transition: color var(--dur-content) var(--ease-out);
-}
-
-.step.active .num {
-  color: var(--color-cyan);
+.stepNum {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .stepTitle {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--fs-display-sm);
-  color: var(--color-text-muted);
-  margin-top: var(--space-2xs);
-  transition: color var(--dur-content) var(--ease-out);
-}
-
-.step.active .stepTitle {
-  color: var(--color-text);
+  font-size: clamp(1.25rem, 1rem + 1.1vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: var(--ls-title);
+  color: var(--text);
 }
 
 .stepText {
-  margin-top: var(--space-xs);
-  font-size: var(--fs-body-sm);
-  color: var(--color-text-faint);
-  max-width: 30ch;
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--text-2);
+  max-width: min(62ch, var(--measure));
 }
 
-.note {
-  margin-top: var(--space-2xl);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--color-border);
-  font-size: var(--fs-body-sm);
-  color: var(--color-text-faint);
-  max-width: 70ch;
-}
-
-@media (max-width: 860px) {
-  .timeline {
-    flex-direction: column;
-    gap: var(--space-lg);
-    padding-top: 0;
-    padding-left: var(--space-lg);
+@media (max-width: 1024px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-4);
+    margin-bottom: var(--s-7);
   }
+
   .track {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: auto;
-    width: 2px;
-    height: auto;
+    padding-left: 40px;
   }
-  .trackFill {
-    width: 2px;
-    height: calc(var(--progress, 0) * 100%);
+
+  .rail,
+  .fill {
+    left: 7px;
   }
+
+  .node {
+    left: -40px;
+    width: 13px;
+    height: 13px;
+  }
+
   .step {
-    padding-top: 0;
-    padding-left: var(--space-lg);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-3);
   }
-  .dot {
-    top: 4px;
-    left: calc(-1 * var(--space-lg) - 5px);
+
+  .steps {
+    gap: var(--s-7);
   }
 }

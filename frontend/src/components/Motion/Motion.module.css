@@ -1,0 +1,96 @@
+/*
+  The whole site's reveal vocabulary is these three moves and nothing else.
+  The rule: things are *constructed*, not faded in.
+
+    Lines   — display type rises out from behind the rule it sits on.
+    Rule    — a hairline draws from its anchored end.
+    Settle  — the quiet one, for reading text: a short 4px lift.
+
+  Motion has hierarchy: display type gets Lines, structure gets Rule, and
+  body copy gets Settle or nothing at all. Applying the same reveal to every
+  element is exactly what makes a page feel machine-assembled.
+*/
+
+/* ── Lines ─────────────────────────────────────────────────────────── */
+.line {
+  display: block;
+  overflow: hidden;
+  /* Descenders would otherwise be clipped by the mask. */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.lineInner {
+  display: block;
+  /* Last-resort guard so no dictionary can ever push a display word past
+     the gutter. It only engages for a word that genuinely cannot fit. */
+  overflow-wrap: anywhere;
+  transform: translateY(110%);
+  transition: transform var(--t-3) var(--e-draw);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform;
+}
+
+.in > .lineInner {
+  transform: translateY(0);
+}
+
+/* ── Rule ──────────────────────────────────────────────────────────── */
+.rule {
+  display: block;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--t-3) var(--e-draw);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.ruleIn {
+  transform: scaleX(1);
+}
+
+.ruleVertical {
+  width: 1px;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.ruleVertical.ruleIn {
+  transform: scaleY(1);
+}
+
+/* ── Settle ────────────────────────────────────────────────────────── */
+.settle {
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity var(--t-2) var(--e-out),
+    transform var(--t-2) var(--e-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.settleIn {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Scramble ──────────────────────────────────────────────────────── */
+.scramble {
+  /* Mono glyphs are fixed-width, so resolving characters in place never
+     reflows the label. `pre-wrap` rather than `pre`: the spaces still have
+     to survive the scramble, but a long label — the Uzbek section marks run
+     to thirty characters — must be allowed to break on a narrow screen. */
+  white-space: pre-wrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lineInner,
+  .rule,
+  .ruleVertical,
+  .settle {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

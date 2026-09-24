@@ -1,164 +1,191 @@
-import { motion, type Variants } from 'motion/react';
+import { useEffect, type FormEvent } from 'react';
 import { useTranslation } from '../../i18n';
 import { useOrderForm } from '../../hooks/useOrderForm';
-import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
-import { SuccessModal } from '../../components/SuccessModal/SuccessModal';
+import { flare, setGathering } from '../../lib/sceneStore';
+import { Lines, Settle } from '../../components/Motion/Motion';
+import { SectionMark } from '../../components/SectionMark/SectionMark';
+import { GirihMark } from '../../components/GirihMark/GirihMark';
+import { Button } from '../../components/Button/Button';
 import styles from './Contact.module.css';
 
-const maskLine: Variants = {
-  hidden: { y: '100%' },
-  show: { y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
-};
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-};
-
+/**
+ * The order form.
+ *
+ * Everything server-side is untouched: this still POSTs `name` and
+ * `phone_number` to `/order` with the CSRF token and the
+ * `X-Requested-With: XMLHttpRequest` header that makes Django answer with
+ * JSON (see hooks/useOrderForm.ts and app/views.py). Only the presentation
+ * changed.
+ *
+ * The result is shown in place rather than in a modal: there is no dialog
+ * to trap focus in or dismiss, the outcome is announced politely to screen
+ * readers, and a failed send leaves the Telegram route visible right beside
+ * it instead of hiding it behind an overlay.
+ */
 export function Contact() {
   const { t } = useTranslation();
   const form = useOrderForm();
-  const reducedMotion = usePrefersReducedMotion();
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     void form.submit();
   };
 
+  const settled = form.status === 'success' || form.status === 'error';
+
+  // A delivered order is the one moment on the page worth marking: the
+  // lantern sends a single bright wave out through the strapwork.
+  useEffect(() => {
+    if (form.status === 'success') flare();
+  }, [form.status]);
+
+  useEffect(() => () => setGathering(false), []);
+
   return (
     <section id="contact" className={`${styles.contact} section`}>
-      <div className={styles.glow} aria-hidden="true" />
-      <div className="container">
-        <div className={styles.grid}>
-          <div>
-            <motion.div
-              initial={reducedMotion ? undefined : 'hidden'}
-              whileInView={reducedMotion ? undefined : 'show'}
-              viewport={{ once: true, amount: 0.5 }}
-            >
-              <span className="section-label">{t.contact.label}</span>
-            </motion.div>
-            <h2 className={styles.title}>
-              {reducedMotion ? (
-                <>
-                  <span>{t.contact.titleLine1}</span>
-                  <span>{t.contact.titleLine2}</span>
-                </>
-              ) : (
-                <motion.span initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
-                  <span>
-                    <motion.span variants={maskLine} style={{ display: 'block' }}>
-                      {t.contact.titleLine1}
-                    </motion.span>
-                  </span>
-                  <span>
-                    <motion.span variants={maskLine} transition={{ delay: 0.07 }} style={{ display: 'block' }}>
-                      {t.contact.titleLine2}
-                    </motion.span>
-                  </span>
-                </motion.span>
-              )}
-            </h2>
-            <motion.p
-              className={styles.subtitle}
-              variants={reducedMotion ? undefined : fadeUp}
-              initial={reducedMotion ? undefined : 'hidden'}
-              whileInView={reducedMotion ? undefined : 'show'}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ delay: 0.15 }}
-            >
-              {t.contact.subtitle}
-            </motion.p>
+      <div className="shell">
+        <SectionMark index="06" label={t.contact.label} />
 
-            <motion.a
-              href="https://t.me/akm0028"
-              target="_blank"
-              rel="noreferrer"
-              className={styles.telegramCard}
-              data-cursor="open"
-              variants={reducedMotion ? undefined : fadeUp}
-              initial={reducedMotion ? undefined : 'hidden'}
-              whileInView={reducedMotion ? undefined : 'show'}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ delay: 0.22 }}
-            >
-              <span className={styles.telegramIcon} aria-hidden="true">
+        <div className={styles.head}>
+          <Lines
+            as="h2"
+            className={styles.title}
+            step={100}
+            lines={[t.contact.titleLine1, t.contact.titleLine2]}
+          />
+          <Settle className={styles.subtitle} as="p" delay={260}>
+            {t.contact.subtitle}
+          </Settle>
+        </div>
+
+        <div className={styles.grid}>
+          <Settle className={styles.aside} delay={120}>
+            <a className={styles.telegram} href="https://t.me/akm0028" target="_blank" rel="noreferrer">
+              <span className={styles.telegramArrow} aria-hidden="true">
                 ↗
               </span>
               <span>
                 <span className={styles.telegramTitle}>{t.contact.telegramTitle}</span>
-                <br />
                 <span className={styles.telegramHandle}>{t.contact.telegramHandle}</span>
               </span>
-            </motion.a>
-          </div>
+            </a>
+            <p className={styles.asideRow}>
+              {t.hero.specLocation}
+              <span className={styles.asideValue}>{t.footer.location}</span>
+            </p>
+            <p className={styles.asideRow}>
+              {t.hero.specLanguages}
+              <span className={styles.asideValue}>RU · UZ · EN</span>
+            </p>
+          </Settle>
 
-          <motion.form
-            className={styles.formCard}
-            onSubmit={onSubmit}
-            noValidate
-            variants={reducedMotion ? undefined : fadeUp}
-            initial={reducedMotion ? undefined : 'hidden'}
-            whileInView={reducedMotion ? undefined : 'show'}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ delay: 0.1 }}
-          >
-            <div className={styles.formTitle}>{t.form.title}</div>
+          <Settle className={styles.panel} delay={200} amount={0.15}>
+            <GirihMark className={styles.panelMark} radius={0.45} weight={0.8} />
 
-            <div className={styles.field}>
-              <label htmlFor="order-name">{t.form.nameLabel}</label>
-              <input
-                id="order-name"
-                type="text"
-                required
-                value={form.name}
-                onChange={(e) => form.setName(e.target.value)}
-                placeholder={t.form.namePlaceholder}
-                autoComplete="name"
-              />
-            </div>
+            {settled ? (
+              <div className={styles.panelInner}>
+                <div className={styles.result} role="status" aria-live="polite">
+                  <GirihMark
+                    className={`${styles.resultMark} ${form.status === 'error' ? styles.resultMarkError : ''}`}
+                    radius={0.24}
+                    weight={1.4}
+                  />
+                  <h3 className={styles.resultTitle}>
+                    {form.status === 'success' ? t.form.successTitle : t.form.errorTitle}
+                  </h3>
+                  <p className={styles.resultText}>
+                    {form.status === 'success' ? t.form.successText : t.form.errorText}
+                  </p>
+                  <Button variant="ghost" onClick={form.reset} arrow={form.status === 'error' ? '→' : null}>
+                    {form.status === 'success' ? t.form.successClose : t.form.errorClose}
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <form
+                className={styles.panelInner}
+                onSubmit={onSubmit}
+                noValidate
+                onFocusCapture={() => setGathering(true)}
+                onBlurCapture={() => setGathering(false)}
+              >
+                <h3 className={styles.panelTitle}>{t.form.title}</h3>
 
-            <div className={styles.field}>
-              <label htmlFor="order-phone">{t.form.phoneLabel}</label>
-              <input
-                id="order-phone"
-                type="tel"
-                inputMode="numeric"
-                required
-                maxLength={18}
-                className={form.phoneError ? styles.error : ''}
-                value={form.phone}
-                onFocus={form.onPhoneFocus}
-                onChange={(e) => form.onPhoneChange(e.target.value)}
-                onBlur={form.onPhoneBlur}
-                placeholder={t.form.phonePlaceholder}
-                autoComplete="tel"
-              />
-              {form.phoneError && <div className={styles.fieldError}>{t.form.phoneError}</div>}
-            </div>
+                <div className={styles.field}>
+                  <label className={styles.label} htmlFor="order-name">
+                    {t.form.nameLabel}
+                  </label>
+                  <input
+                    id="order-name"
+                    name="name"
+                    className={styles.input}
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => form.setName(e.target.value)}
+                    placeholder={t.form.namePlaceholder}
+                    autoComplete="name"
+                  />
+                </div>
 
-            <button type="submit" className={styles.submit} disabled={form.status === 'submitting'}>
-              {form.status === 'submitting' ? t.form.submitting : t.form.submit}
-            </button>
-          </motion.form>
+                <div className={styles.field}>
+                  <label className={styles.label} htmlFor="order-phone">
+                    {t.form.phoneLabel}
+                  </label>
+                  <input
+                    id="order-phone"
+                    name="phone_number"
+                    className={`${styles.input} ${form.phoneError ? styles.inputError : ''}`}
+                    type="tel"
+                    inputMode="tel"
+                    required
+                    maxLength={18}
+                    value={form.phone}
+                    onFocus={form.onPhoneFocus}
+                    onChange={(e) => form.onPhoneChange(e.target.value)}
+                    onBlur={form.onPhoneBlur}
+                    placeholder={t.form.phonePlaceholder}
+                    autoComplete="tel"
+                    aria-invalid={form.phoneError || undefined}
+                    aria-describedby={form.phoneError ? 'order-phone-error' : undefined}
+                  />
+                  {form.phoneError && (
+                    <span id="order-phone-error" className={styles.error} role="alert">
+                      {t.form.phoneError}
+                    </span>
+                  )}
+                </div>
+
+                <div className={styles.submitRow}>
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    block
+                    arrow="→"
+                    busy={form.status === 'submitting'}
+                    disabled={form.status === 'submitting'}
+                  >
+                    {form.status === 'submitting' ? t.form.submitting : t.form.submit}
+                  </Button>
+                  <p className={styles.privacy}>{t.form.note}</p>
+                </div>
+              </form>
+            )}
+          </Settle>
         </div>
 
-        <motion.p
-          className={styles.final}
-          initial={reducedMotion ? undefined : { opacity: 0, y: 20 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span>{t.contact.finalLine1}</span>
-          <span className={styles.accent}>{t.contact.finalLine2}</span>
-        </motion.p>
+        <Lines
+          as="p"
+          className={styles.closing}
+          step={110}
+          lines={[
+            t.contact.finalLine1,
+            <span key="accent" className={styles.closingAccent}>
+              {t.contact.finalLine2}
+            </span>,
+          ]}
+        />
       </div>
-
-      <SuccessModal
-        status={form.status === 'success' || form.status === 'error' ? form.status : null}
-        onClose={form.reset}
-      />
     </section>
   );
 }

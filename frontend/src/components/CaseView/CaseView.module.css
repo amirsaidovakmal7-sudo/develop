@@ -1,0 +1,332 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: var(--ink-900);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  transition: opacity 280ms var(--e-out);
+}
+
+.backdropOpen {
+  opacity: 1;
+}
+
+/* Fixed bar so the close control is reachable from anywhere in a long case. */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-4) var(--gutter);
+  background: rgba(5, 7, 12, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.barNum {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.08em;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+}
+
+.barTitle {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-right: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.iconBtn {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-1);
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  transition:
+    color var(--t-1) var(--e-out),
+    border-color var(--t-1) var(--e-out),
+    background var(--t-1) var(--e-out);
+}
+
+.iconBtn:hover,
+.iconBtn:focus-visible {
+  color: var(--brass-hi);
+  border-color: var(--brass);
+  background: var(--brass-dim);
+}
+
+.body {
+  width: 100%;
+  max-width: var(--col-max);
+  margin-inline: auto;
+  padding: var(--s-9) var(--gutter) var(--s-10);
+}
+
+/* ── Case head ── */
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.618fr) minmax(0, 0.382fr);
+  gap: var(--s-7);
+  align-items: start;
+  padding-bottom: var(--s-7);
+  border-bottom: 1px solid var(--line);
+}
+
+.title {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  margin-bottom: var(--s-4);
+}
+
+.subtitle {
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--brass);
+  margin-bottom: var(--s-5);
+}
+
+.description {
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--text-2);
+  max-width: 58ch;
+  margin-bottom: var(--s-5);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+
+.noLink {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-3);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-1);
+  padding: 14px 22px;
+}
+
+/* ── Meta table ── */
+.meta {
+  border-top: 1px solid var(--line);
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: var(--s-4);
+  padding-block: var(--s-3);
+  border-bottom: 1px solid var(--line-soft);
+  font-size: var(--fs-sm);
+}
+
+.metaKey {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding-top: 3px;
+}
+
+.metaValue {
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.06em;
+  color: var(--text-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-1);
+  padding: 3px 8px;
+}
+
+.features {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.features li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border: 1px solid var(--brass);
+  transform: rotate(45deg);
+}
+
+.statusLive {
+  color: var(--signal);
+}
+
+/* ── Media ──────────────────────────────────────────────────────────
+   Uncropped, at the screenshots' own 16:9, one per row on a wide screen.
+   This is the proof; it gets the width. */
+.media {
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-8);
+}
+
+.shot {
+  border: 1px solid var(--line);
+  border-radius: var(--r-2);
+  overflow: hidden;
+  background: var(--ink-700);
+}
+
+.shot img {
+  width: 100%;
+  height: auto;
+}
+
+.clip {
+  border: 1px solid var(--line);
+  border-radius: var(--r-2);
+  overflow: hidden;
+  background: var(--ink-900);
+  aspect-ratio: 16 / 9;
+}
+
+.clip video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mediaNote {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: var(--s-7);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── Continue ── */
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  margin-top: var(--s-9);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line);
+}
+
+.nextLabel {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.nextLink {
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  line-height: 1.1;
+  letter-spacing: var(--ls-title);
+  color: var(--text);
+  transition: color var(--t-1) var(--e-out);
+  text-align: left;
+}
+
+.nextLink:hover,
+.nextLink:focus-visible {
+  color: var(--brass);
+}
+
+.prevLink {
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+
+  .body {
+    padding-block: var(--s-7) var(--s-9);
+  }
+}
+
+@media (max-width: 720px) {
+  /* The gallery runs edge to edge on a phone: the screenshots are the point
+     of the case, and a 20px gutter either side of them is wasted width. */
+  .media {
+    margin-inline: calc(var(--gutter) * -1);
+    gap: var(--s-4);
+  }
+
+  .shot,
+  .clip {
+    border-inline: 0;
+    border-radius: 0;
+  }
+
+  .metaRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .actions > * {
+    flex: 1 1 100%;
+  }
+
+  .next {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--s-5);
+  }
+
+  .prevLink {
+    text-align: left;
+  }
+}
