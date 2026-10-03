@@ -9,23 +9,23 @@
 web
 
 ## Stack
-Django 6 backend serving a Vite-built React 19 + TypeScript bundle (frontend/dist via manifest, template tag `vite_asset_tags`). The frontend has no runtime dependencies beyond React: the girih lantern is hand-written WebGL2 (three.js, @react-three/fiber, GSAP and Motion were all removed — together they cost ~275 kB gzipped to draw two line meshes and one fade), fonts are self-hosted, and there are no third-party requests at runtime. Keep Django as the source of business logic.
+Django 6 backend serving a Vite-built React 19 + TypeScript bundle (frontend/dist via manifest, template tag `vite_asset_tags`). No runtime dependencies beyond React: routing is a small History-API router (`src/lib/router.tsx`), the «Живая материя» particle scene is hand-written WebGL2 (`src/scene/`), fonts (Inter Tight, Inter, JetBrains Mono) are self-hosted. Design system: DESIGN_SYSTEM.md; copy: COPY.md. Keep Django as the source of business logic.
 
 ## Users
 Small and mid-size business owners in Tashkent / Uzbekistan and Russian-speaking markets (learning centers, music schools, cafes, shops, communities) deciding whether to hire a solo developer. Secondary: other developers and recruiters judging craft. They arrive from a Telegram link, a search, or a recommendation, on a phone more often than a desktop.
 
 ## Product Purpose
-Personal portfolio of Akmal, a solo full-stack developer (websites, web apps, Telegram bots, backend, automation). Success = a visitor believes the work is real and well-built and leaves a lead: the /order form (name + phone) or a message to @akm0028 on Telegram. The site itself is also proof of craft.
+Services site of Akmal, a developer who builds websites, Telegram bots, Telegram Mini Apps and CRM systems for businesses. It speaks about results, not technologies. Success = a visitor understands what they can order and leaves a lead: the request form (name, phone, optional Telegram, consent) or a message on Telegram.
 
 ## Positioning
 One person owns the whole path from interface to server to deploy, works directly with the client, no agency or subcontractors. Shown through 12 real shipped or completed projects, several live on the web.
 
 ## Operating Context
-- Django routes: `/` (shell template), `POST /order` (fields `name`, `phone_number`; CSRF via `X-CSRFToken` header or meta tag; AJAX header `X-Requested-With: XMLHttpRequest` returns JSON `{ok}` or 400 `missing_fields` / 502 `telegram_failed`). Delivery is a Telegram bot message to a group (env `TELEGRAM_BOT_TOKEN`, `TELEGRAM_GROUP_ID`).
+- Django routes: `/`, `/about`, `/services`, `/projects`, `/contacts` (same shell template; unknown paths → shell with status 404), `POST /order` (fields `name`, `phone_number`, optional `telegram`; CSRF via `X-CSRFToken` header or meta tag; AJAX header `X-Requested-With: XMLHttpRequest` returns JSON `{ok}` or 400 `missing_fields` / 502 `telegram_failed`). Delivery is a Telegram bot message to a group (env `TELEGRAM_BOT_TOKEN`, `TELEGRAM_GROUP_ID`).
 - Phone is an Uzbek number: `+998` + 9 digits, masked client-side.
 - Languages: ru (default), uz, en; switcher persists in localStorage; dictionaries in `frontend/src/i18n/{ru,uz,en}.ts`.
 - Telegram: https://t.me/akm0028.
-- Contact/CTA flow: project links open the live sites; two projects are video-only (Sonata Bot, Akkord) hosted on Uploadcare.
+- Contact/CTA flow: «Обсудить проект» scrolls to the form on Home/Contacts, otherwise opens /contacts#request. Contact values other than Telegram are placeholders in `src/data/contacts.ts`. Two projects are video-only (Sonata Bot, Akkord) hosted on Uploadcare.
 
 ## Capabilities and Constraints
 - Do not change the `/order` contract, remove CSRF, or rewrite Django views without need.
@@ -34,11 +34,10 @@ One person owns the whole path from interface to server to deploy, works directl
 - Undecided / not to invent: prices, years of experience, client counts, testimonials, awards, statistics.
 
 ## Brand Commitments
-Name: Akmal, wordmark `akmal.dev`. Domain https://akmal.dev/. Tone: direct, plain, business-oriented, no hype. Full ru/uz/en copy already exists and is authoritative.
+Name: Akmal, wordmark `akmal.dev`. Domain https://akmal.dev/. Tone: direct, plain, business-oriented, no hype. Copy for all pages in ru/uz/en lives in COPY.md and `src/i18n/`; no technology names in client-facing text.
 
 ## Evidence on Hand
 - 12 projects with real screenshots (frontend/src/assets/projects) and live URLs: cashflowtashkent.uz, sonataschool.uz, flexcamp.uz, aysdrums.uz, b4lerman.pythonanywhere.com.
-- Stack facts: Python, Django, FastAPI, Aiogram, Telebot, SQLAlchemy, PostgreSQL, SQLite, React, HTML, CSS, JavaScript, VPS, SEO, deploy on VPS/PythonAnywhere.
 - Five-step process (brief, plan, development, test, deploy) with payment terms in copy.
 - No testimonials, clients list, or numbers exist. None may be added.
 

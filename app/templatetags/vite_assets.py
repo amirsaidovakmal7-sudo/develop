@@ -3,8 +3,7 @@ Reads frontend/dist/.vite/manifest.json (produced by `npm run build`, see
 frontend/vite.config.ts `build.manifest: true`) and renders the correct
 hashed <script>/<link>/<preload> tags for the React entry point.
 
-This is the only piece of glue between Django and the built React app —
-views.py, urls.py and the /order flow are untouched.
+This is the only piece of glue between Django and the built React app.
 """
 import json
 from pathlib import Path
@@ -25,10 +24,10 @@ ENTRY_KEY = 'index.html'
 # the reflow that used to happen when the display font finally arrived.
 # Both scripts are listed because the language switch is client-side.
 PRELOAD_FONTS = (
-    'src/assets/fonts/unbounded-400-cyrillic.woff2',
-    'src/assets/fonts/unbounded-400-latin.woff2',
-    'src/assets/fonts/onest-400-cyrillic.woff2',
-    'src/assets/fonts/onest-400-latin.woff2',
+    'src/assets/fonts/inter-tight-cyrillic.woff2',
+    'src/assets/fonts/inter-tight-latin.woff2',
+    'src/assets/fonts/inter-cyrillic.woff2',
+    'src/assets/fonts/inter-latin.woff2',
 )
 
 _cached_manifest = None

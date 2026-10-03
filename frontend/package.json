@@ -11,7 +11,6 @@
     "check-i18n": "node scripts/check-i18n.ts",
     "fetch-media": "node scripts/fetch-media.mjs",
     "gen-media-sizes": "node scripts/gen-media-sizes.mjs",
-    "gen-girih": "node scripts/gen-girih.mjs",
     "gen-fonts": "node scripts/gen-fonts.mjs",
     "gen-video-posters": "node scripts/gen-video-posters.mjs"
   },

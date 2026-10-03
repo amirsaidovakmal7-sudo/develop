@@ -17,7 +17,7 @@ function flatten(obj: Dict, prefix = ''): Map<string, unknown> {
   const out = new Map<string, unknown>();
   for (const [key, value] of Object.entries(obj)) {
     const path = prefix ? `${prefix}.${key}` : key;
-    if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+    if (value !== null && typeof value === 'object') {
       for (const [k, v] of flatten(value as Dict, path)) out.set(k, v);
     } else {
       out.set(path, value);

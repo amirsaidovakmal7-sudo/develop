@@ -1,327 +1,341 @@
 .header {
   position: fixed;
   inset: 0 0 auto;
-  z-index: var(--z-header);
-  display: flex;
-  justify-content: center;
-  transition: background var(--t-2) var(--e-out);
-}
-
-.header::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0;
-  height: 1px;
-  background: var(--line);
-  opacity: 0;
-  transition: opacity var(--t-2) var(--e-out);
-}
-
-.scrolled {
-  background: rgba(8, 11, 18, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-.scrolled::after {
-  opacity: 1;
-}
-
-/* Scroll progress rides the header's own hairline — the accent marking
-   position, not a decorative bar. */
-.progress {
-  position: absolute;
-  inset: auto 0 0;
-  height: 1px;
-  transform-origin: left center;
-  background: var(--brass);
-  opacity: 0.55;
-  will-change: transform;
-}
-
-/* Full width on purpose: the bar is chrome, not content, so it belongs to
-   the screen rather than to the reading column. Capped at --col-max it sat
-   marooned in the middle of a wide monitor with 640px of nothing either
-   side — the loudest of the signals that made the page read as boxed. */
-.inner {
-  width: 100%;
-  padding: var(--s-4) var(--gutter);
-  display: flex;
-  align-items: center;
-  gap: var(--s-5);
-}
-
-/* ── Wordmark ── */
-.brand {
-  display: inline-flex;
-  align-items: center;
-  /* Tall enough to be a finger target without moving the wordmark. */
-  min-height: 44px;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--text);
-  margin-right: auto;
-}
-
-.brandMark {
-  width: 26px;
-  height: 26px;
-  flex: none;
-  color: var(--brass);
-  opacity: 0.85;
-  transition:
-    transform var(--t-3) var(--e-out),
-    opacity var(--t-1) var(--e-out);
-}
-
-.brand:hover .brandMark {
-  transform: rotate(36deg);
-  opacity: 1;
-}
-
-.brandDim {
-  color: var(--text-3);
-}
-
-/* ── Desktop nav ── */
-.nav ul {
-  display: flex;
-  align-items: center;
-  gap: var(--s-5);
-  list-style: none;
-}
-
-.navLink {
-  position: relative;
-  font-family: var(--font-mono);
-  font-size: var(--fs-label);
-  font-weight: 500;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--text-3);
-  padding-block: 4px;
-  transition: color var(--t-1) var(--e-out);
-}
-
-.navLink::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0;
-  height: 1px;
-  background: var(--brass);
-  transform: scaleX(0);
-  transform-origin: right center;
-  transition: transform var(--t-2) var(--e-out);
-}
-
-.navLink:hover,
-.navLink:focus-visible {
-  color: var(--text);
-}
-
-.navLink:hover::after,
-.navLink:focus-visible::after {
-  transform: scaleX(1);
-  transform-origin: left center;
-}
-
-.current {
-  color: var(--text);
-}
-
-.current::after {
-  transform: scaleX(1);
-  transform-origin: left center;
-  background: var(--brass-line);
-}
-
-.cta {
-  font-family: var(--font-mono);
-  font-size: var(--fs-label);
-  font-weight: 500;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--text);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-1);
-  padding: 9px 16px;
-  transition:
-    border-color var(--t-1) var(--e-out),
-    color var(--t-1) var(--e-out),
-    background var(--t-1) var(--e-out);
-}
-
-.cta:hover,
-.cta:focus-visible {
-  border-color: var(--brass);
-  color: var(--brass-hi);
-  background: var(--brass-dim);
-}
-
-/* ── Mobile toggle ── */
-.toggle {
-  display: none;
-  width: 48px;
-  height: 48px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-1);
-  position: relative;
-  flex: none;
-}
-
-.toggle span {
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  height: 1px;
-  background: var(--text);
-  transition:
-    transform var(--t-2) var(--e-out),
-    opacity var(--t-1) var(--e-out);
-}
-
-.toggle span:nth-child(1) {
-  top: 19px;
-}
-.toggle span:nth-child(2) {
-  top: 27px;
-}
-
-.toggleOpen span:nth-child(1) {
-  transform: translateY(4px) rotate(45deg);
-}
-.toggleOpen span:nth-child(2) {
-  transform: translateY(-4px) rotate(-45deg);
-}
-
-/* ── Mobile panel ── */
-.panel {
-  position: fixed;
-  inset: 0;
-  z-index: calc(var(--z-header) - 1);
-  background: var(--ink-900);
-  display: grid;
-  grid-template-rows: 1fr auto;
-  padding: 104px var(--gutter) calc(var(--s-7) + env(safe-area-inset-bottom));
-  visibility: hidden;
-  opacity: 0;
-  transition:
-    opacity var(--t-2) var(--e-out),
-    visibility var(--t-2);
-}
-
-.panelOpen {
-  visibility: visible;
-  opacity: 1;
-}
-
-.panelMark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150vw;
-  height: 150vw;
-  translate: -50% -50%;
-  color: #3d4a66;
-  opacity: 0.32;
+  z-index: 50;
+  padding: 14px 0 10px;
   pointer-events: none;
 }
 
-.panelNav {
-  position: relative;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--s-3);
-}
-
-.panelNav a {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 9vw, 3rem);
-  line-height: 1.05;
-  min-height: 56px;
-  letter-spacing: var(--ls-display);
-  color: var(--text);
-  display: flex;
-  align-items: baseline;
-  gap: var(--s-4);
+/* Solid strip behind the whole bar (no backdrop-filter: Chrome drops a pseudo-element's own fill when it has one) once the page scrolls, so content passing underneath never shows through the logo or nav. */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
   opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity var(--t-2) var(--e-out),
-    transform var(--t-2) var(--e-out);
+  transition: opacity var(--dur-base) var(--ease-out);
 }
 
-.panelOpen .panelNav a {
+.scrolled::before {
   opacity: 1;
-  transform: none;
 }
 
-.panelOpen .panelNav li:nth-child(1) a {
-  transition-delay: 60ms;
-}
-.panelOpen .panelNav li:nth-child(2) a {
-  transition-delay: 110ms;
-}
-.panelOpen .panelNav li:nth-child(3) a {
-  transition-delay: 160ms;
-}
-.panelOpen .panelNav li:nth-child(4) a {
-  transition-delay: 210ms;
-}
-
-.panelNum {
-  font-family: var(--font-mono);
-  font-size: var(--fs-label);
-  color: var(--brass);
-  letter-spacing: 0.08em;
-}
-
-.panelFoot {
+.bar {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--s-4);
-  padding-top: var(--s-5);
-  border-top: 1px solid var(--line);
+  gap: 16px;
+  height: 56px;
+  pointer-events: auto;
 }
 
-.panelTelegram {
-  display: inline-flex;
+.logo {
+  position: relative;
+  z-index: 2;
+  font: 500 19px / 1 var(--font-display);
+  letter-spacing: -0.03em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--text-2);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.logo:hover span {
+  color: var(--saffron);
+}
+
+.pill {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: rgba(12, 12, 15, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.pill a {
+  padding: 9px 15px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+  white-space: nowrap;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.pill a:hover {
+  color: var(--text);
+}
+
+.pill a.on {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.right {
+  position: relative;
+  z-index: 2;
+  display: flex;
   align-items: center;
-  min-height: 44px;
-  font-family: var(--font-mono);
-  font-size: var(--fs-label);
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--brass);
+  gap: 16px;
 }
 
-@media (max-width: 1024px) {
-  .nav,
-  .cta {
+.langs {
+  display: flex;
+  gap: 2px;
+  font: 500 var(--fs-label) / 1 var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.langs button {
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-3);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.langs button:hover {
+  color: var(--text);
+}
+
+.langs .langOn {
+  color: var(--saffron);
+}
+
+.burger {
+  display: none;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: rgba(12, 12, 15, 0.72);
+}
+
+.burger span {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  height: 1.5px;
+  background: var(--text);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.burger span:first-child {
+  top: 19px;
+}
+
+.burger span:last-child {
+  top: 27px;
+}
+
+.isOpen .burger span:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.isOpen .burger span:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+.isOpen::before {
+  opacity: 1;
+}
+
+.menuWrap {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear var(--dur-base);
+}
+
+.menuOpen {
+  visibility: visible;
+  pointer-events: auto;
+  transition: none;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(2, 2, 3, 0.72);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.menuOpen .scrim {
+  opacity: 1;
+}
+
+.sheet {
+  position: absolute;
+  top: 78px;
+  left: 12px;
+  right: 12px;
+  max-height: calc(100dvh - 92px);
+  overflow-y: auto;
+  padding: 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  opacity: 0;
+  transform: translateY(-10px) scale(0.97);
+  transform-origin: top right;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.menuOpen .sheet {
+  opacity: 1;
+  transform: none;
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menuNav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 58px;
+  padding: 0 10px 0 18px;
+  border-radius: 16px;
+  font: 500 1.4rem / 1.1 var(--font-display);
+  letter-spacing: -0.025em;
+  color: var(--text-2);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.45s var(--ease-out),
+    transform 0.45s var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+  transition-delay: calc(var(--i) * 40ms + 60ms), calc(var(--i) * 40ms + 60ms), 0ms, 0ms;
+}
+
+.menuOpen .menuNav a {
+  opacity: 1;
+  transform: none;
+}
+
+.menuNav a:active {
+  background: var(--surface-2);
+}
+
+.menuNav a i {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  font-style: normal;
+  font-size: 15px;
+  color: var(--text-3);
+}
+
+.menuNav a.menuOn {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.menuNav a.menuOn span::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin: 0 12px 0 -2px;
+  border-radius: 50%;
+  background: var(--saffron);
+  vertical-align: middle;
+}
+
+.menuNav a.menuOn i {
+  border-color: var(--saffron);
+  background: var(--saffron);
+  color: var(--on-saffron);
+}
+
+.menuFoot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 14px 6px 6px;
+  border-top: 1px solid var(--line);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-out);
+  transition-delay: calc(var(--i) * 40ms + 60ms);
+}
+
+.menuOpen .menuFoot {
+  opacity: 1;
+}
+
+
+
+
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--bg);
+}
+
+.segmented button {
+  min-height: 40px;
+  border-radius: var(--radius-pill);
+}
+
+.segmented .langOn {
+  background: var(--saffron-dim);
+}
+
+@media (max-width: 1119px) {
+  .pill a {
+    padding: 9px 11px;
+  }
+}
+
+@media (max-width: 999px) {
+  .pill,
+  .desktopOnly {
     display: none;
   }
 
-  /* The switcher moves into the menu panel rather than fighting the
-     wordmark and the toggle for room in a 360px bar. */
-  .inner > [role='group'] {
-    display: none;
-  }
-
-  .toggle {
+  .burger {
     display: block;
-    margin-left: auto;
   }
 }
 
-@media (min-width: 1025px) {
-  .panel {
+@media (max-width: 559px) {
+  .cta {
     display: none;
   }
 }

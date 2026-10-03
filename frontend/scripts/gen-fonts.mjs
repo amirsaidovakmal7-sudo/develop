@@ -24,9 +24,9 @@ const OUT_CSS = path.join(ROOT, 'src', 'styles', 'fonts.css');
 const WANTED = new Set(['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext']);
 
 const FAMILIES = [
-  { family: 'Unbounded', weights: [400] },
-  { family: 'Onest', weights: [400, 500] },
-  { family: 'JetBrains Mono', weights: [400, 500] },
+  { family: 'Inter Tight', weights: '400..500' },
+  { family: 'Inter', weights: '400..500' },
+  { family: 'JetBrains Mono', weights: '400..500' },
 ];
 
 // A modern UA is required or the API answers with .ttf instead of .woff2.
@@ -38,7 +38,7 @@ mkdirSync(FONT_DIR, { recursive: true });
 const blocks = [];
 
 for (const { family, weights } of FAMILIES) {
-  const url = `https://fonts.googleapis.com/css2?family=${family.replace(/ /g, '+')}:wght@${weights.join(';')}&display=swap`;
+  const url = `https://fonts.googleapis.com/css2?family=${family.replace(/ /g, '+')}:wght@${weights}&display=swap`;
   const css = await fetch(url, { headers: { 'User-Agent': UA } }).then((r) => r.text());
 
   // The response is a run of `/* subset */ @font-face { ... }` blocks.
@@ -46,12 +46,12 @@ for (const { family, weights } of FAMILIES) {
 
   for (const [, subset, body] of faces) {
     if (!WANTED.has(subset)) continue;
-    const weight = body.match(/font-weight:\s*(\d+)/)?.[1];
+    const weight = body.match(/font-weight:\s*([\d ]+);/)?.[1]?.trim();
     const src = body.match(/url\((https:[^)]+\.woff2)\)/)?.[1];
     const range = body.match(/unicode-range:\s*([^;]+);/)?.[1]?.trim();
     if (!weight || !src || !range) continue;
 
-    const slug = `${family.toLowerCase().replace(/ /g, '-')}-${weight}-${subset}.woff2`;
+    const slug = `${family.toLowerCase().replace(/ /g, '-')}-${subset}.woff2`;
     const bytes = Buffer.from(await fetch(src).then((r) => r.arrayBuffer()));
     writeFileSync(path.join(FONT_DIR, slug), bytes);
 

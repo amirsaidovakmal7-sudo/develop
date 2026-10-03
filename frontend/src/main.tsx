@@ -1,18 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { I18nProvider } from './i18n'
-import { initPointerStore } from './lib/pointerStore'
-import { initScrollStore } from './lib/scrollStore'
-import './styles/global.css'
-import App from './App.tsx'
-
-initPointerStore()
-initScrollStore()
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { I18nProvider } from './i18n';
+import { RouterProvider } from './lib/router';
+import './styles/global.css';
+import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <I18nProvider>
-      <App />
+      <RouterProvider>
+        <App />
+      </RouterProvider>
     </I18nProvider>
   </StrictMode>,
-)
+);
