@@ -47,11 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'app',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'app.middleware.CanonicalHostMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -113,7 +115,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+# Russian lives at the root, Uzbek and English under /uz and /en (see frontend/src/lib/routes.ts).
+LANGUAGE_CODE = 'ru'
+LANGUAGES = [
+    ('ru', 'Русский'),
+    ('uz', 'Oʻzbekcha'),
+    ('en', 'English'),
+]
 
 TIME_ZONE = 'UTC'
 
@@ -135,3 +143,17 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'frontend' / 'dist',
 ]
+
+# --- SEO ---------------------------------------------------------------
+# Absolute addresses in canonical, hreflang, Open Graph, JSON-LD, robots.txt and
+# sitemap.xml are built from this origin, never from the request's Host header.
+SITE_ORIGIN = os.environ.get('SITE_ORIGIN', 'https://akmal.dev').rstrip('/')
+
+# Ownership checks for Google Search Console and Yandex Webmaster: the tags are
+# rendered only when a value is set.
+GOOGLE_SITE_VERIFICATION = os.environ.get('GOOGLE_SITE_VERIFICATION', '').strip()
+YANDEX_VERIFICATION = os.environ.get('YANDEX_VERIFICATION', '').strip()
+
+# PythonAnywhere terminates HTTPS in front of Django.
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = os.environ.get('DJANGO_SECURE_SSL_REDIRECT', 'False') == 'True'

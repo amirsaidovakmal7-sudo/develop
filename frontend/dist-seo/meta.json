@@ -1,0 +1,1409 @@
+{
+  "defaultLocale": "ru",
+  "locales": [
+    "ru",
+    "uz",
+    "en"
+  ],
+  "ogImage": {
+    "width": 1200,
+    "height": 630
+  },
+  "contacts": {
+    "phone": {
+      "label": "+998 97 777 28 09",
+      "href": "tel:+998977772809"
+    },
+    "telegram": {
+      "label": "@akm0028",
+      "href": "https://t.me/akm0028"
+    },
+    "email": {
+      "label": "amirsaidovakmal7@gmail.com",
+      "href": "mailto:amirsaidovakmal7@gmail.com"
+    },
+    "instagram": {
+      "label": "@akm.028",
+      "href": "https://instagram.com/akm.028"
+    }
+  },
+  "languages": {
+    "ru": {
+      "ogLocale": "ru_RU",
+      "ogLocaleAlternates": [
+        "uz_UZ",
+        "en_US"
+      ],
+      "ogImage": "/static/og/og-ru.png",
+      "seo": {
+        "ogAlt": "akmal.dev — создание сайтов, Telegram-ботов и CRM в Ташкенте",
+        "ogHeadline": "Сайты, Telegram-боты и CRM для бизнеса",
+        "ogSub": "Разработчик в Ташкенте · без посредников",
+        "person": "Акмаль",
+        "jobTitle": "Разработчик сайтов, Telegram-ботов и CRM",
+        "orgName": "akmal.dev — Акмаль, разработчик для бизнеса",
+        "orgDescription": "Разработчик из Ташкента: сайты, Telegram-боты, Telegram Mini App и CRM-системы для бизнеса — от задачи до запуска и поддержки.",
+        "city": "Ташкент",
+        "country": "Узбекистан"
+      },
+      "notFound": {
+        "title": "Страница не найдена — akmal.dev",
+        "description": "Такой страницы нет. Начните с главной или посмотрите услуги."
+      },
+      "pages": {
+        "home": {
+          "path": "/",
+          "title": "Создание сайтов, Telegram-ботов и CRM в Ташкенте | akmal.dev",
+          "description": "Разработка сайтов, Telegram-ботов, Mini App и CRM для бизнеса в Ташкенте. Работаю напрямую, без посредников: от задачи до запуска и поддержки.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/"
+            }
+          ],
+          "breadcrumbs": []
+        },
+        "about": {
+          "path": "/about",
+          "title": "Обо мне — Акмаль, разработчик в Ташкенте | akmal.dev",
+          "description": "Акмаль — разработчик из Ташкента: создаю сайты, Telegram-ботов и CRM для бизнеса и веду проект сам, без агентства и посредников.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/about"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/about"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/about"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/about"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Главная",
+              "path": "/"
+            },
+            {
+              "name": "Обо мне",
+              "path": "/about"
+            }
+          ]
+        },
+        "services": {
+          "path": "/services",
+          "title": "Услуги: разработка сайтов, Telegram-ботов и CRM | akmal.dev",
+          "description": "Лендинги, корпоративные сайты, интернет-магазины, Telegram-боты, Mini App, CRM-системы, интеграции, хостинг и поддержка. Ташкент.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Главная",
+              "path": "/"
+            },
+            {
+              "name": "Услуги",
+              "path": "/services"
+            }
+          ]
+        },
+        "projects": {
+          "path": "/projects",
+          "title": "Портфолио: сайты и Telegram-боты для бизнеса | akmal.dev",
+          "description": "Реальные проекты: сайты, Telegram-боты и веб-приложения для учебных центров, музыкальных школ, кафе и сообществ. Задача, решение и экраны.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/projects"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/projects"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/projects"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/projects"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Главная",
+              "path": "/"
+            },
+            {
+              "name": "Проекты",
+              "path": "/projects"
+            }
+          ]
+        },
+        "contacts": {
+          "path": "/contacts",
+          "title": "Контакты — заказать сайт или бота в Ташкенте | akmal.dev",
+          "description": "Оставьте заявку или напишите в Telegram: обсудим задачу, и я предложу решение, срок и стоимость сайта, бота или Mini App.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/contacts"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/contacts"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/contacts"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/contacts"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Главная",
+              "path": "/"
+            },
+            {
+              "name": "Контакты",
+              "path": "/contacts"
+            }
+          ]
+        },
+        "websites": {
+          "path": "/services/websites",
+          "title": "Создание сайтов в Ташкенте под ключ | akmal.dev",
+          "description": "Создание и разработка сайтов для бизнеса в Ташкенте: лендинги, корпоративные сайты, интернет-магазины. Под ключ, напрямую с разработчиком.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/websites"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/websites"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/websites"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/websites"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Главная",
+              "path": "/"
+            },
+            {
+              "name": "Услуги",
+              "path": "/services"
+            },
+            {
+              "name": "Создание сайтов",
+              "path": "/services/websites"
+            }
+          ],
+          "service": {
+            "name": "Создание сайтов",
+            "description": "Разрабатываю сайты, которые приводят заявки: от лендинга под рекламу до корпоративного сайта с каталогом и интернет-магазина. Делаю под ключ — структура, дизайн, разработка, запуск на вашем домене и поддержка — и работаю напрямую, без веб-студии и посредников."
+          }
+        },
+        "telegramBots": {
+          "path": "/services/telegram-bots",
+          "title": "Разработка Telegram-ботов для бизнеса | akmal.dev",
+          "description": "Создание Telegram-ботов на заказ: приём заявок, запись, заказы и оплата, уведомления менеджерам и выгрузка в CRM. Разработчик в Ташкенте.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/telegram-bots"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/telegram-bots"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/telegram-bots"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/telegram-bots"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Главная",
+              "path": "/"
+            },
+            {
+              "name": "Услуги",
+              "path": "/services"
+            },
+            {
+              "name": "Разработка Telegram-ботов",
+              "path": "/services/telegram-bots"
+            }
+          ],
+          "service": {
+            "name": "Разработка Telegram-ботов",
+            "description": "Создаю Telegram-ботов на заказ, которые работают за менеджера круглосуточно: принимают заявки, записывают клиентов, оформляют заказы и оплату, отвечают на частые вопросы и передают данные в CRM или таблицу. Бот делаю под ваш процесс — от сценария диалога до запуска на сервере."
+          }
+        },
+        "miniApp": {
+          "path": "/services/telegram-mini-app",
+          "title": "Разработка Telegram Mini App под ключ | akmal.dev",
+          "description": "Telegram Mini App для бизнеса: интернет-магазин, онлайн-запись, личный кабинет и оплата прямо в Telegram. Разработка под ключ в Ташкенте.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/telegram-mini-app"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/telegram-mini-app"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/telegram-mini-app"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/telegram-mini-app"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Главная",
+              "path": "/"
+            },
+            {
+              "name": "Услуги",
+              "path": "/services"
+            },
+            {
+              "name": "Разработка Telegram Mini App",
+              "path": "/services/telegram-mini-app"
+            }
+          ],
+          "service": {
+            "name": "Разработка Telegram Mini App",
+            "description": "Разрабатываю Telegram Mini App — полноценные веб-приложения, которые открываются прямо в Telegram: без установки, без регистрации и в привычном для клиента мессенджере. Делаю мини-приложения под любую задачу бизнеса — от интернет-магазина до внутреннего сервиса для команды."
+          }
+        },
+        "crm": {
+          "path": "/services/crm",
+          "title": "Разработка CRM-системы для бизнеса | akmal.dev",
+          "description": "Разработка CRM под ваш бизнес: база клиентов, воронка продаж, задачи и отчёты, интеграция с сайтом и Telegram-ботом. Ташкент, Узбекистан.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/crm"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/crm"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/crm"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/crm"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Главная",
+              "path": "/"
+            },
+            {
+              "name": "Услуги",
+              "path": "/services"
+            },
+            {
+              "name": "Разработка CRM-систем",
+              "path": "/services/crm"
+            }
+          ],
+          "service": {
+            "name": "Разработка CRM-систем",
+            "description": "Разрабатываю CRM-системы под процессы конкретной компании — вместо таблиц, блокнотов и переписок. Все клиенты, сделки и задачи в одном месте, заявки с сайта и из Telegram-бота попадают туда автоматически, а руководитель видит отчёты по продажам."
+          }
+        }
+      },
+      "services": [
+        {
+          "name": "Многостраничный сайт",
+          "description": "Корпоративный сайт под ключ: разделы об услугах и компании, каталог, формы заявок и админ-панель — лицо бизнеса в интернете.",
+          "page": "websites"
+        },
+        {
+          "name": "Лендинг",
+          "description": "Лендинг на заказ под рекламу и запуск продукта: сильная подача предложения, быстрая загрузка и заявка в один клик.",
+          "page": "websites"
+        },
+        {
+          "name": "Telegram-бот",
+          "description": "Разработка Telegram-бота на заказ: приём заявок, консультации, запись и продажи круглосуточно, без участия менеджера.",
+          "page": "telegramBots"
+        },
+        {
+          "name": "Telegram Mini App",
+          "description": "Полноценное веб-приложение внутри Telegram под любую задачу: магазин, сервис записи, личный кабинет, бронирование, программа лояльности или внутренний инструмент для сотрудников. Клиенту не нужно ничего скачивать.",
+          "page": "miniApp"
+        },
+        {
+          "name": "CRM-система",
+          "description": "CRM-система для бизнеса, в которой команда ведёт клиентов, сделки и задачи — вместо таблиц и переписок.",
+          "page": "crm"
+        },
+        {
+          "name": "Интеграции",
+          "description": "Интеграция сайта, бота и CRM с сервисами, которыми вы уже пользуетесь, — чтобы данные не переносили вручную.",
+          "page": null
+        },
+        {
+          "name": "Домен и почта",
+          "description": "Подберу и зарегистрирую домен, настрою корпоративную почту на нём.",
+          "page": null
+        },
+        {
+          "name": "Хостинг и запуск",
+          "description": "Размещаю проект на надёжном сервере и слежу, чтобы он был доступен.",
+          "page": null
+        },
+        {
+          "name": "Техническая поддержка",
+          "description": "Поддержка и сопровождение сайта или бота после запуска.",
+          "page": null
+        },
+        {
+          "name": "Доработки",
+          "description": "Новые разделы, функции и интеграции для уже работающего проекта — в том числе сделанного не мной.",
+          "page": null
+        }
+      ],
+      "projects": [
+        {
+          "name": "Cashflow Tashkent",
+          "description": "Сайт делового сообщества",
+          "url": "https://cashflowtashkent.uz"
+        },
+        {
+          "name": "Sonata School",
+          "description": "Сайт музыкальной школы на нескольких языках",
+          "url": "https://sonataschool.uz"
+        },
+        {
+          "name": "FlexCamp",
+          "description": "Сайт летнего лагеря",
+          "url": "https://flexcamp.uz"
+        },
+        {
+          "name": "AysDrums",
+          "description": "Продающий сайт музыкальной студии",
+          "url": "https://aysdrums.uz"
+        },
+        {
+          "name": "Sonata Bot",
+          "description": "Telegram-бот расписания для музыкальной школы",
+          "url": null
+        },
+        {
+          "name": "Learning Center",
+          "description": "Сайт учебного центра",
+          "url": "https://b4lerman.pythonanywhere.com/"
+        },
+        {
+          "name": "Tech Project",
+          "description": "Веб-система под процесс компании",
+          "url": null
+        },
+        {
+          "name": "Online Shop",
+          "description": "Интернет-магазин",
+          "url": null
+        },
+        {
+          "name": "Fast-food Bot",
+          "description": "Telegram-бот для заказов в кафе",
+          "url": null
+        },
+        {
+          "name": "Messenger",
+          "description": "Веб-мессенджер",
+          "url": null
+        },
+        {
+          "name": "News Portal",
+          "description": "Новостной портал с модерацией",
+          "url": null
+        },
+        {
+          "name": "Akkord",
+          "description": "Прототип сайта музыкальной школы",
+          "url": null
+        }
+      ]
+    },
+    "uz": {
+      "ogLocale": "uz_UZ",
+      "ogLocaleAlternates": [
+        "ru_RU",
+        "en_US"
+      ],
+      "ogImage": "/static/og/og-uz.png",
+      "seo": {
+        "ogAlt": "akmal.dev — Toshkentda sayt, Telegram-bot va CRM yaratish",
+        "ogHeadline": "Biznes uchun saytlar, Telegram-botlar va CRM",
+        "ogSub": "Toshkentdagi dasturchi · vositachilarsiz",
+        "person": "Akmal",
+        "jobTitle": "Sayt, Telegram-bot va CRM dasturchisi",
+        "orgName": "akmal.dev — Akmal, biznes uchun dasturchi",
+        "orgDescription": "Toshkentdagi dasturchi: biznes uchun saytlar, Telegram-botlar, Telegram Mini App va CRM tizimlari — vazifadan ishga tushirish va qoʻllab-quvvatlashgacha.",
+        "city": "Toshkent",
+        "country": "Oʻzbekiston"
+      },
+      "notFound": {
+        "title": "Sahifa topilmadi — akmal.dev",
+        "description": "Bunday sahifa yoʻq. Bosh sahifadan boshlang yoki xizmatlarni koʻring."
+      },
+      "pages": {
+        "home": {
+          "path": "/uz",
+          "title": "Sayt yaratish, Telegram-bot va CRM — Toshkent | akmal.dev",
+          "description": "Toshkentda biznes uchun sayt yaratish, Telegram-bot, Mini App va CRM ishlab chiqish. Vositachilarsiz: vazifadan ishga tushirishgacha.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/"
+            }
+          ],
+          "breadcrumbs": []
+        },
+        "about": {
+          "path": "/uz/about",
+          "title": "Men haqimda — Akmal, Toshkentdagi dasturchi | akmal.dev",
+          "description": "Akmal — Toshkentdagi dasturchi: biznes uchun sayt, Telegram-bot va CRM yarataman, loyihani agentlik va vositachilarsiz oʻzim olib boraman.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/about"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/about"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/about"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/about"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Bosh sahifa",
+              "path": "/uz"
+            },
+            {
+              "name": "Men haqimda",
+              "path": "/uz/about"
+            }
+          ]
+        },
+        "services": {
+          "path": "/uz/services",
+          "title": "Xizmatlar: sayt, Telegram-bot va CRM yaratish | akmal.dev",
+          "description": "Lendinglar, korporativ saytlar, internet-doʻkonlar, Telegram-botlar, Mini App, CRM tizimlari, integratsiyalar, hosting va qoʻllab-quvvatlash.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Bosh sahifa",
+              "path": "/uz"
+            },
+            {
+              "name": "Xizmatlar",
+              "path": "/uz/services"
+            }
+          ]
+        },
+        "projects": {
+          "path": "/uz/projects",
+          "title": "Portfolio: saytlar va Telegram-botlar | akmal.dev",
+          "description": "Real loyihalar: oʻquv markazlari, musiqa maktablari, kafelar va hamjamiyatlar uchun saytlar, Telegram-botlar va veb-ilovalar.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/projects"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/projects"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/projects"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/projects"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Bosh sahifa",
+              "path": "/uz"
+            },
+            {
+              "name": "Loyihalar",
+              "path": "/uz/projects"
+            }
+          ]
+        },
+        "contacts": {
+          "path": "/uz/contacts",
+          "title": "Kontaktlar — sayt yoki bot buyurtma qilish | akmal.dev",
+          "description": "Ariza qoldiring yoki Telegramga yozing: vazifani muhokama qilamiz, men sayt, bot yoki Mini App uchun yechim, muddat va narxni taklif qilaman.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/contacts"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/contacts"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/contacts"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/contacts"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Bosh sahifa",
+              "path": "/uz"
+            },
+            {
+              "name": "Kontaktlar",
+              "path": "/uz/contacts"
+            }
+          ]
+        },
+        "websites": {
+          "path": "/uz/services/websites",
+          "title": "Toshkentda sayt yaratish xizmati | akmal.dev",
+          "description": "Biznes uchun sayt yaratish: lending, korporativ sayt va internet-doʻkon. Dizayndan ishga tushirishgacha — dasturchi bilan toʻgʻridan-toʻgʻri.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/websites"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/websites"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/websites"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/websites"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Bosh sahifa",
+              "path": "/uz"
+            },
+            {
+              "name": "Xizmatlar",
+              "path": "/uz/services"
+            },
+            {
+              "name": "Sayt yaratish",
+              "path": "/uz/services/websites"
+            }
+          ],
+          "service": {
+            "name": "Sayt yaratish",
+            "description": "Arizalar olib keladigan saytlar yarataman: reklama uchun lendingdan tortib katalogli korporativ sayt va internet-doʻkongacha. Hammasini oʻzim qilaman — tuzilma, dizayn, ishlab chiqish, domeningizda ishga tushirish va qoʻllab-quvvatlash. Veb-studiya va vositachilarsiz, dasturchi bilan toʻgʻridan-toʻgʻri ishlaysiz."
+          }
+        },
+        "telegramBots": {
+          "path": "/uz/services/telegram-bots",
+          "title": "Telegram-bot yaratish xizmati — Toshkent | akmal.dev",
+          "description": "Buyurtma asosida Telegram-bot yaratish: arizalar, yozilish, buyurtma va toʻlov, menejerga bildirishnoma va CRMga uzatish. Toshkent.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/telegram-bots"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/telegram-bots"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/telegram-bots"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/telegram-bots"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Bosh sahifa",
+              "path": "/uz"
+            },
+            {
+              "name": "Xizmatlar",
+              "path": "/uz/services"
+            },
+            {
+              "name": "Telegram-bot yaratish",
+              "path": "/uz/services/telegram-bots"
+            }
+          ],
+          "service": {
+            "name": "Telegram-bot yaratish",
+            "description": "Buyurtma asosida menejer oʻrniga kecha-kunduz ishlaydigan Telegram-botlar yarataman: arizalarni qabul qiladi, mijozlarni yozib qoʻyadi, buyurtma va toʻlovni rasmiylashtiradi, koʻp beriladigan savollarga javob beradi va maʼlumotlarni CRM yoki jadvalga uzatadi. Botni jarayoningizga moslab qilaman — muloqot ssenariysidan serverda ishga tushirishgacha."
+          }
+        },
+        "miniApp": {
+          "path": "/uz/services/telegram-mini-app",
+          "title": "Telegram Mini App ishlab chiqish | akmal.dev",
+          "description": "Telegram Mini App: Telegramda internet magazin, onlayn yozilish, shaxsiy kabinet va toʻlov. Biznes uchun toʻliq ishlab chiqish, Toshkent.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/telegram-mini-app"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/telegram-mini-app"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/telegram-mini-app"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/telegram-mini-app"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Bosh sahifa",
+              "path": "/uz"
+            },
+            {
+              "name": "Xizmatlar",
+              "path": "/uz/services"
+            },
+            {
+              "name": "Telegram Mini App ishlab chiqish",
+              "path": "/uz/services/telegram-mini-app"
+            }
+          ],
+          "service": {
+            "name": "Telegram Mini App ishlab chiqish",
+            "description": "Telegram Mini App ishlab chiqaman — toʻgʻridan-toʻgʻri Telegramda ochiladigan toʻliq veb-ilovalar: oʻrnatishsiz, roʻyxatdan oʻtishsiz va mijozga odatiy messenjerda. Biznesning har qanday vazifasi uchun mini-ilova yarataman — Telegramda internet magazin ochishdan tortib jamoa uchun ichki servisgacha."
+          }
+        },
+        "crm": {
+          "path": "/uz/services/crm",
+          "title": "Biznes uchun CRM tizimi ishlab chiqish | akmal.dev",
+          "description": "Biznesingizga mos CRM tizimi: mijozlar bazasi, savdo voronkasi, vazifalar va hisobotlar, sayt va Telegram-bot bilan integratsiya.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/crm"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/crm"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/crm"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/crm"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Bosh sahifa",
+              "path": "/uz"
+            },
+            {
+              "name": "Xizmatlar",
+              "path": "/uz/services"
+            },
+            {
+              "name": "CRM tizimi ishlab chiqish",
+              "path": "/uz/services/crm"
+            }
+          ],
+          "service": {
+            "name": "CRM tizimi ishlab chiqish",
+            "description": "Muayyan kompaniya jarayonlariga moslab CRM tizimlarini ishlab chiqaman — jadvallar, daftarlar va yozishmalar oʻrniga. Barcha mijozlar, bitimlar va vazifalar bir joyda, sayt va Telegram-botdan kelgan arizalar u yerga avtomatik tushadi, rahbar esa savdo boʻyicha hisobotlarni koʻradi."
+          }
+        }
+      },
+      "services": [
+        {
+          "name": "Koʻp sahifali sayt",
+          "description": "Toʻliq tayyor korporativ sayt: xizmatlar va kompaniya haqida boʻlimlar, katalog, ariza shakllari va admin-panel — biznesning internetdagi yuzi.",
+          "page": "websites"
+        },
+        {
+          "name": "Lending",
+          "description": "Reklama va mahsulotni ishga tushirish uchun buyurtma asosida lending: taklifni kuchli taqdim etish, tez yuklanish va bir bosishda ariza.",
+          "page": "websites"
+        },
+        {
+          "name": "Telegram-bot",
+          "description": "Buyurtma asosida Telegram-bot yaratish: arizalar, maslahatlar, yozilish va savdo kecha-kunduz, menejer ishtirokisiz.",
+          "page": "telegramBots"
+        },
+        {
+          "name": "Telegram Mini App",
+          "description": "Telegram ichida har qanday vazifa uchun toʻliq veb-ilova: doʻkon, yozilish servisi, shaxsiy kabinet, bron qilish, sodiqlik dasturi yoki xodimlar uchun ichki vosita. Mijozga hech narsa yuklab olish shart emas.",
+          "page": "miniApp"
+        },
+        {
+          "name": "CRM tizimi",
+          "description": "Biznes uchun CRM tizimi: jamoa jadval va yozishmalar oʻrniga mijozlar, bitimlar va vazifalarni bir joyda yuritadi.",
+          "page": "crm"
+        },
+        {
+          "name": "Integratsiyalar",
+          "description": "Sayt, bot va CRMni siz allaqachon foydalanayotgan servislar bilan integratsiya qilaman — maʼlumotlar qoʻlda koʻchirilmaydi.",
+          "page": null
+        },
+        {
+          "name": "Domen va pochta",
+          "description": "Domen tanlab, roʻyxatdan oʻtkazaman va unda korporativ pochtani sozlayman.",
+          "page": null
+        },
+        {
+          "name": "Hosting va ishga tushirish",
+          "description": "Loyihani ishonchli serverga joylayman va doim ochiq turishini kuzataman.",
+          "page": null
+        },
+        {
+          "name": "Texnik qoʻllab-quvvatlash",
+          "description": "Ishga tushirilgandan keyin sayt yoki botni qoʻllab-quvvatlash va kuzatib borish.",
+          "page": null
+        },
+        {
+          "name": "Takomillashtirish",
+          "description": "Ishlayotgan loyiha uchun yangi boʻlimlar, funksiyalar va integratsiyalar — boshqa dasturchi yaratgan boʻlsa ham.",
+          "page": null
+        }
+      ],
+      "projects": [
+        {
+          "name": "Cashflow Tashkent",
+          "description": "Biznes hamjamiyati sayti",
+          "url": "https://cashflowtashkent.uz"
+        },
+        {
+          "name": "Sonata School",
+          "description": "Musiqa maktabining koʻp tilli sayti",
+          "url": "https://sonataschool.uz"
+        },
+        {
+          "name": "FlexCamp",
+          "description": "Yozgi lager sayti",
+          "url": "https://flexcamp.uz"
+        },
+        {
+          "name": "AysDrums",
+          "description": "Musiqa studiyasining sotuvchi sayti",
+          "url": "https://aysdrums.uz"
+        },
+        {
+          "name": "Sonata Bot",
+          "description": "Musiqa maktabi uchun jadval Telegram-boti",
+          "url": null
+        },
+        {
+          "name": "Learning Center",
+          "description": "Oʻquv markazi sayti",
+          "url": "https://b4lerman.pythonanywhere.com/"
+        },
+        {
+          "name": "Tech Project",
+          "description": "Kompaniya jarayoni uchun veb-tizim",
+          "url": null
+        },
+        {
+          "name": "Online Shop",
+          "description": "Internet-doʻkon",
+          "url": null
+        },
+        {
+          "name": "Fast-food Bot",
+          "description": "Kafe uchun buyurtma Telegram-boti",
+          "url": null
+        },
+        {
+          "name": "Messenger",
+          "description": "Veb-messenjer",
+          "url": null
+        },
+        {
+          "name": "News Portal",
+          "description": "Moderatsiyali yangiliklar portali",
+          "url": null
+        },
+        {
+          "name": "Akkord",
+          "description": "Musiqa maktabi sayti prototipi",
+          "url": null
+        }
+      ]
+    },
+    "en": {
+      "ogLocale": "en_US",
+      "ogLocaleAlternates": [
+        "ru_RU",
+        "uz_UZ"
+      ],
+      "ogImage": "/static/og/og-en.png",
+      "seo": {
+        "ogAlt": "akmal.dev — website, Telegram bot and CRM development in Tashkent",
+        "ogHeadline": "Websites, Telegram bots and CRM for business",
+        "ogSub": "Developer in Tashkent · no middlemen",
+        "person": "Akmal",
+        "jobTitle": "Website, Telegram bot and CRM developer",
+        "orgName": "akmal.dev — Akmal, developer for business",
+        "orgDescription": "Tashkent-based developer: websites, Telegram bots, Telegram Mini Apps and CRM systems for business — from brief to launch and support.",
+        "city": "Tashkent",
+        "country": "Uzbekistan"
+      },
+      "notFound": {
+        "title": "Page not found — akmal.dev",
+        "description": "This page doesn't exist. Start from the home page or browse services."
+      },
+      "pages": {
+        "home": {
+          "path": "/en",
+          "title": "Website, Bot & CRM Development in Tashkent | akmal.dev",
+          "description": "Website, Telegram bot, Mini App and CRM development for businesses in Tashkent. Work directly with the developer, from brief to launch and support.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/"
+            }
+          ],
+          "breadcrumbs": []
+        },
+        "about": {
+          "path": "/en/about",
+          "title": "About Akmal — Developer in Tashkent | akmal.dev",
+          "description": "Akmal is a Tashkent-based developer building websites, Telegram bots and CRM systems for business — one person runs your project, no agency.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/about"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/about"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/about"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/about"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Home",
+              "path": "/en"
+            },
+            {
+              "name": "About",
+              "path": "/en/about"
+            }
+          ]
+        },
+        "services": {
+          "path": "/en/services",
+          "title": "Website, Telegram Bot & CRM Development Services | akmal.dev",
+          "description": "Landing pages, corporate websites, online stores, Telegram bots, Mini Apps, CRM systems, integrations, hosting and support. Tashkent, Uzbekistan.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Home",
+              "path": "/en"
+            },
+            {
+              "name": "Services",
+              "path": "/en/services"
+            }
+          ]
+        },
+        "projects": {
+          "path": "/en/projects",
+          "title": "Portfolio: Websites & Telegram Bots for Business | akmal.dev",
+          "description": "Real projects: websites, Telegram bots and web apps for learning centres, music schools, cafés and communities. Task, solution and screens.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/projects"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/projects"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/projects"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/projects"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Home",
+              "path": "/en"
+            },
+            {
+              "name": "Projects",
+              "path": "/en/projects"
+            }
+          ]
+        },
+        "contacts": {
+          "path": "/en/contacts",
+          "title": "Contact — Order a Website or Bot in Tashkent | akmal.dev",
+          "description": "Leave a request or message me on Telegram: we'll discuss your task and I'll suggest a solution, timeline and price for a website, bot or Mini App.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/contacts"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/contacts"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/contacts"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/contacts"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Home",
+              "path": "/en"
+            },
+            {
+              "name": "Contact",
+              "path": "/en/contacts"
+            }
+          ]
+        },
+        "websites": {
+          "path": "/en/services/websites",
+          "title": "Website Development in Tashkent | akmal.dev",
+          "description": "Website development for business in Tashkent: landing pages, corporate sites and online stores, built end to end. Work directly with the developer.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/websites"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/websites"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/websites"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/websites"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Home",
+              "path": "/en"
+            },
+            {
+              "name": "Services",
+              "path": "/en/services"
+            },
+            {
+              "name": "Website development",
+              "path": "/en/services/websites"
+            }
+          ],
+          "service": {
+            "name": "Website development",
+            "description": "I build websites that bring in leads: from a landing page for your ads to a corporate site with a catalogue or an online store. I handle it end to end — structure, design, development, launch on your domain and support — and you work directly with the developer, not a web studio or a middleman."
+          }
+        },
+        "telegramBots": {
+          "path": "/en/services/telegram-bots",
+          "title": "Telegram Bot Development for Business | akmal.dev",
+          "description": "Custom Telegram bot development: lead capture, bookings, orders and payments, manager notifications and CRM sync. Developer based in Tashkent.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/telegram-bots"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/telegram-bots"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/telegram-bots"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/telegram-bots"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Home",
+              "path": "/en"
+            },
+            {
+              "name": "Services",
+              "path": "/en/services"
+            },
+            {
+              "name": "Telegram bot development",
+              "path": "/en/services/telegram-bots"
+            }
+          ],
+          "service": {
+            "name": "Telegram bot development",
+            "description": "I develop custom Telegram bots that work for your manager around the clock: they take requests, book clients, handle orders and payments, answer common questions and pass data to your CRM or a spreadsheet. Each bot is built around your process — from the conversation flow to launch on a server."
+          }
+        },
+        "miniApp": {
+          "path": "/en/services/telegram-mini-app",
+          "title": "Telegram Mini App Development | akmal.dev",
+          "description": "Telegram Mini Apps for business: an online store, bookings, personal accounts and payments right inside Telegram. Built end to end in Tashkent.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/telegram-mini-app"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/telegram-mini-app"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/telegram-mini-app"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/telegram-mini-app"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Home",
+              "path": "/en"
+            },
+            {
+              "name": "Services",
+              "path": "/en/services"
+            },
+            {
+              "name": "Telegram Mini App development",
+              "path": "/en/services/telegram-mini-app"
+            }
+          ],
+          "service": {
+            "name": "Telegram Mini App development",
+            "description": "I develop Telegram Mini Apps — full web apps that open right inside Telegram: nothing to install, no sign-up, in the messenger your clients already use. I build mini apps for any business task, from an online store in Telegram to an internal service for your team."
+          }
+        },
+        "crm": {
+          "path": "/en/services/crm",
+          "title": "Custom CRM Development for Business | akmal.dev",
+          "description": "CRM development around your business: client base, sales pipeline, tasks and reports, integrated with your website and Telegram bot. Tashkent.",
+          "alternates": [
+            {
+              "hreflang": "ru",
+              "path": "/services/crm"
+            },
+            {
+              "hreflang": "uz",
+              "path": "/uz/services/crm"
+            },
+            {
+              "hreflang": "en",
+              "path": "/en/services/crm"
+            },
+            {
+              "hreflang": "x-default",
+              "path": "/services/crm"
+            }
+          ],
+          "breadcrumbs": [
+            {
+              "name": "Home",
+              "path": "/en"
+            },
+            {
+              "name": "Services",
+              "path": "/en/services"
+            },
+            {
+              "name": "CRM development",
+              "path": "/en/services/crm"
+            }
+          ],
+          "service": {
+            "name": "CRM development",
+            "description": "I develop CRM systems around the processes of a specific company — instead of spreadsheets, notebooks and chats. All clients, deals and tasks live in one place, requests from your website and Telegram bot land there automatically, and the owner sees sales reports."
+          }
+        }
+      },
+      "services": [
+        {
+          "name": "Multi-page website",
+          "description": "A corporate website built end to end: sections about your services and company, a catalogue, request forms and an admin panel — your business's face online.",
+          "page": "websites"
+        },
+        {
+          "name": "Landing page",
+          "description": "Landing page development for ads and product launches: a strong offer, fast loading and a one-click request.",
+          "page": "websites"
+        },
+        {
+          "name": "Telegram bot",
+          "description": "Custom Telegram bot development: requests, consultations, bookings and sales around the clock, without a manager.",
+          "page": "telegramBots"
+        },
+        {
+          "name": "Telegram Mini App",
+          "description": "A full web app inside Telegram for any task: a store, a booking service, a personal account, reservations, a loyalty programme or an internal tool for staff. Your clients don't need to install anything.",
+          "page": "miniApp"
+        },
+        {
+          "name": "CRM system",
+          "description": "A CRM system for business where your team manages clients, deals and tasks — instead of spreadsheets and chats.",
+          "page": "crm"
+        },
+        {
+          "name": "Integrations",
+          "description": "I integrate your website, bot and CRM with the tools you already use, so nobody copies data by hand.",
+          "page": null
+        },
+        {
+          "name": "Domain and email",
+          "description": "I'll pick and register a domain and set up company email on it.",
+          "page": null
+        },
+        {
+          "name": "Hosting and launch",
+          "description": "I host your project on a reliable server and keep an eye on its availability.",
+          "page": null
+        },
+        {
+          "name": "Technical support",
+          "description": "Support and maintenance for your website or bot after launch.",
+          "page": null
+        },
+        {
+          "name": "Improvements",
+          "description": "New sections, features and integrations for a project that's already live — even if someone else built it.",
+          "page": null
+        }
+      ],
+      "projects": [
+        {
+          "name": "Cashflow Tashkent",
+          "description": "Website for a business community",
+          "url": "https://cashflowtashkent.uz"
+        },
+        {
+          "name": "Sonata School",
+          "description": "Multilingual music school website",
+          "url": "https://sonataschool.uz"
+        },
+        {
+          "name": "FlexCamp",
+          "description": "Summer camp website",
+          "url": "https://flexcamp.uz"
+        },
+        {
+          "name": "AysDrums",
+          "description": "Sales website for a music studio",
+          "url": "https://aysdrums.uz"
+        },
+        {
+          "name": "Sonata Bot",
+          "description": "Telegram schedule bot for a music school",
+          "url": null
+        },
+        {
+          "name": "Learning Center",
+          "description": "Learning centre website",
+          "url": "https://b4lerman.pythonanywhere.com/"
+        },
+        {
+          "name": "Tech Project",
+          "description": "Web system for a company process",
+          "url": null
+        },
+        {
+          "name": "Online Shop",
+          "description": "Online store",
+          "url": null
+        },
+        {
+          "name": "Fast-food Bot",
+          "description": "Telegram ordering bot for a café",
+          "url": null
+        },
+        {
+          "name": "Messenger",
+          "description": "Web messenger",
+          "url": null
+        },
+        {
+          "name": "News Portal",
+          "description": "News portal with moderation",
+          "url": null
+        },
+        {
+          "name": "Akkord",
+          "description": "Music school website prototype",
+          "url": null
+        }
+      ]
+    }
+  }
+}

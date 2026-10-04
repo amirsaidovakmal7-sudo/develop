@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
   gap: 16px;
   margin-top: 56px;
 }
@@ -125,6 +125,10 @@
   color: var(--text-2);
 }
 
+.plain .tile {
+  min-height: 240px;
+}
+
 @media (max-width: 999px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -139,6 +143,10 @@
   .grid {
     grid-template-columns: 1fr;
     margin-top: 40px;
+  }
+
+  .plain .tile {
+    min-height: 0;
   }
 
   .tile {

@@ -11,37 +11,23 @@ import {
   type MouseEvent,
   type ReactNode,
 } from 'react';
+import { normalizePath, parsePath, pathFor, SERVICE_PAGES, type Locale, type PageId } from './routes';
 
-export type PageId = 'home' | 'about' | 'services' | 'projects' | 'contacts';
+export { PATHS, type PageId } from './routes';
+
 export type RouteId = PageId | 'notFound';
 
-export const PATHS: Record<PageId, string> = {
-  home: '/',
-  about: '/about',
-  services: '/services',
-  projects: '/projects',
-  contacts: '/contacts',
-};
-
 /** Pages that render the request form, so "Обсудить проект" can scroll instead of navigating. */
-const PAGES_WITH_FORM: RouteId[] = ['home', 'contacts'];
+const PAGES_WITH_FORM: RouteId[] = ['home', 'contacts', ...SERVICE_PAGES];
 export const REQUEST_ANCHOR = 'request';
-
-function normalize(pathname: string) {
-  const trimmed = pathname.replace(/\/+$/, '');
-  return trimmed === '' ? '/' : trimmed;
-}
-
-function matchRoute(pathname: string): RouteId {
-  const path = normalize(pathname);
-  const found = (Object.keys(PATHS) as PageId[]).find((id) => PATHS[id] === path);
-  return found ?? 'notFound';
-}
 
 type RouterValue = {
   route: RouteId;
+  locale: Locale;
   path: string;
   navigate: (to: string) => void;
+  /** Localized address of a page in the current (or given) language. */
+  href: (page: PageId, locale?: Locale) => string;
 };
 
 const RouterContext = createContext<RouterValue | null>(null);
@@ -53,13 +39,13 @@ function scrollToHash(hash: string) {
 }
 
 export function RouterProvider({ children }: { children: ReactNode }) {
-  const [path, setPath] = useState(() => normalize(window.location.pathname));
+  const [path, setPath] = useState(() => normalizePath(window.location.pathname));
   const pendingHash = useRef(window.location.hash.slice(1));
 
   useEffect(() => {
     const onPop = () => {
       pendingHash.current = window.location.hash.slice(1);
-      setPath(normalize(window.location.pathname));
+      setPath(normalizePath(window.location.pathname));
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
@@ -74,9 +60,9 @@ export function RouterProvider({ children }: { children: ReactNode }) {
 
   const navigate = useCallback((to: string) => {
     const url = new URL(to, window.location.origin);
-    const nextPath = normalize(url.pathname);
+    const nextPath = normalizePath(url.pathname);
     const hash = url.hash.slice(1);
-    if (nextPath === normalize(window.location.pathname)) {
+    if (nextPath === normalizePath(window.location.pathname)) {
       if (hash) {
         window.history.replaceState(null, '', nextPath + url.hash);
         scrollToHash(hash);
@@ -91,7 +77,17 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     setPath(nextPath);
   }, []);
 
-  const value = useMemo(() => ({ route: matchRoute(path), path, navigate }), [path, navigate]);
+  const value = useMemo(() => {
+    const { locale, page } = parsePath(path);
+    return {
+      route: page ?? 'notFound',
+      locale,
+      path,
+      navigate,
+      href: (target: PageId, other?: Locale) => pathFor(target, other ?? locale),
+    } satisfies RouterValue;
+  }, [path, navigate]);
+
   return <RouterContext.Provider value={value}>{children}</RouterContext.Provider>;
 }
 
@@ -103,8 +99,8 @@ export function useRouter() {
 
 /** Where a "discuss a project" CTA should lead from the current page. */
 export function useRequestHref() {
-  const { route, path } = useRouter();
-  return PAGES_WITH_FORM.includes(route) ? `${path}#${REQUEST_ANCHOR}` : `${PATHS.contacts}#${REQUEST_ANCHOR}`;
+  const { route, path, href } = useRouter();
+  return PAGES_WITH_FORM.includes(route) ? `${path}#${REQUEST_ANCHOR}` : `${href('contacts')}#${REQUEST_ANCHOR}`;
 }
 
 type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { to: string };

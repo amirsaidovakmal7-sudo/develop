@@ -7,10 +7,10 @@ import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <I18nProvider>
-      <RouterProvider>
+    <RouterProvider>
+      <I18nProvider>
         <App />
-      </RouterProvider>
-    </I18nProvider>
+      </I18nProvider>
+    </RouterProvider>
   </StrictMode>,
 );

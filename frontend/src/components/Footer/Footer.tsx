@@ -1,6 +1,7 @@
 import { useTranslation } from '../../i18n';
 import { contactOrder, contacts } from '../../data/contacts';
-import { Link, PATHS, useRequestHref } from '../../lib/router';
+import { Link, useRequestHref, useRouter } from '../../lib/router';
+import { SERVICE_PAGES } from '../../lib/routes';
 import { NAV, Logo } from '../Header/Header';
 import { LanguageSwitcher } from '../Header/LanguageSwitcher';
 import { Button } from '../ui/Button';
@@ -8,6 +9,7 @@ import styles from './Footer.module.css';
 
 export function Footer() {
   const { t } = useTranslation();
+  const { href } = useRouter();
   const requestHref = useRequestHref();
   return (
     <footer className={styles.footer}>
@@ -29,7 +31,17 @@ export function Footer() {
             <ul>
               {NAV.map((id) => (
                 <li key={id}>
-                  <Link to={PATHS[id]}>{t.nav[id]}</Link>
+                  <Link to={href(id)}>{t.nav[id]}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-label={t.footer.servicesTitle}>
+            <h2 className={styles.colTitle}>{t.footer.servicesTitle}</h2>
+            <ul>
+              {SERVICE_PAGES.map((id) => (
+                <li key={id}>
+                  <Link to={href(id)}>{t.servicePages[id].name}</Link>
                 </li>
               ))}
             </ul>

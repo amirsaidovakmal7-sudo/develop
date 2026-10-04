@@ -5,6 +5,7 @@ import type { ProjectDefinition } from '../../data/projects';
 import { getProjectImages, getProjectPoster, getProjectVideos } from '../../lib/projectMedia';
 import { useProjectCopy } from '../../lib/useProjectCopy';
 import { Button } from '../ui/Button';
+import { useRouter } from '../../lib/router';
 import { BrowserFrame, frameLabel } from '../BrowserFrame/BrowserFrame';
 import styles from './CaseView.module.css';
 
@@ -17,6 +18,7 @@ type Props = {
 
 function Body({ project, num, total }: { project: ProjectDefinition; num: number; total: number }) {
   const { t } = useTranslation();
+  const { href } = useRouter();
   const copy = useProjectCopy(project);
   const images = getProjectImages(project.id);
   const videos = getProjectVideos(project.id);
@@ -60,6 +62,9 @@ function Body({ project, num, total }: { project: ProjectDefinition; num: number
             ) : (
               <span className={styles.noLink}>{t.projects.noLink}</span>
             )}
+            <Button to={href(project.services[0])} variant="text">
+              {t.projects.serviceLabel}: {t.servicePages[project.services[0]].name}
+            </Button>
           </div>
         </div>
       </div>
@@ -70,14 +75,14 @@ function Body({ project, num, total }: { project: ProjectDefinition; num: number
             <video className={styles.shot} src={src} poster={poster?.src} controls playsInline preload="none" />
           </BrowserFrame>
         ))}
-        {images.map((img) => (
+        {images.map((img, i) => (
           <BrowserFrame key={img.src} label={frameLabel(project)}>
             <img
               className={styles.shot}
               src={img.src}
               width={img.width}
               height={img.height}
-              alt={copy.title}
+              alt={copy.screenAlt(i + 1)}
               loading="lazy"
               decoding="async"
             />

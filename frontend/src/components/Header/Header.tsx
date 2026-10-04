@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from '../../i18n';
-import { Link, PATHS, useRequestHref, useRouter, type PageId } from '../../lib/router';
+import { Link, useRequestHref, useRouter, type PageId, type RouteId } from '../../lib/router';
+import { SERVICE_PAGES } from '../../lib/routes';
 import { Button } from '../ui/Button';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import styles from './Header.module.css';
 
-export const NAV: PageId[] = ['home', 'about', 'services', 'projects', 'contacts'];
+export const NAV = ['home', 'about', 'services', 'projects', 'contacts'] as const satisfies PageId[];
+
+/** Service pages live under "Услуги" in the navigation. */
+const navSection = (route: RouteId): RouteId => ((SERVICE_PAGES as RouteId[]).includes(route) ? 'services' : route);
 
 export function Logo() {
+  const { href } = useRouter();
   return (
-    <Link to={PATHS.home} className={styles.logo} aria-label="akmal.dev">
+    <Link to={href('home')} className={styles.logo} aria-label="akmal.dev">
       akmal<span>.dev</span>
     </Link>
   );
@@ -17,7 +22,8 @@ export function Logo() {
 
 export function Header() {
   const { t } = useTranslation();
-  const { route } = useRouter();
+  const { route: current, href } = useRouter();
+  const route = navSection(current);
   const requestHref = useRequestHref();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -45,13 +51,13 @@ export function Header() {
         <span onClickCapture={() => setOpen(false)}>
           <Logo />
         </span>
-        <nav className={styles.pill} aria-label="akmal.dev">
+        <nav className={styles.pill} aria-label={t.footer.navTitle}>
           {NAV.map((id) => (
             <Link
               key={id}
-              to={PATHS[id]}
+              to={href(id)}
               className={route === id ? styles.on : undefined}
-              aria-current={route === id ? 'page' : undefined}
+              aria-current={current === id ? 'page' : undefined}
             >
               {t.nav[id]}
             </Link>
@@ -79,15 +85,15 @@ export function Header() {
       <div className={`${styles.menuWrap} ${open ? styles.menuOpen : ''}`} aria-hidden={!open} inert={!open}>
         <button type="button" className={styles.scrim} tabIndex={-1} aria-label={t.common.menuClose} onClick={() => setOpen(false)} />
         <div id="mobile-menu" className={styles.sheet}>
-          <nav className={styles.menuNav} aria-label="akmal.dev">
+          <nav className={styles.menuNav} aria-label={t.footer.navTitle}>
             {NAV.map((id, i) => (
               <Link
                 key={id}
-                to={PATHS[id]}
+                to={href(id)}
                 onClick={() => setOpen(false)}
                 style={{ ['--i' as string]: i }}
                 className={route === id ? styles.menuOn : undefined}
-                aria-current={route === id ? 'page' : undefined}
+                aria-current={current === id ? 'page' : undefined}
               >
                 <span>{t.nav[id]}</span>
                 <i aria-hidden="true">→</i>

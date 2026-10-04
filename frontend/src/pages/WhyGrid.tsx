@@ -22,7 +22,8 @@ const ICONS: ReactNode[] = [
   </>,
 ];
 
-export function WhyGrid({ items }: { items: { title: string; text: string }[] }) {
+/** `icons={null}` drops the pictograms (service pages), `cols` sets the desktop column count. */
+export function WhyGrid({ items, icons = ICONS, cols = 4 }: { items: { title: string; text: string }[]; icons?: ReactNode[] | null; cols?: number }) {
   const { ref, inView } = useInView<HTMLUListElement>({ amount: 0.2 });
 
   const onMove = (e: PointerEvent<HTMLLIElement>) => {
@@ -32,14 +33,16 @@ export function WhyGrid({ items }: { items: { title: string; text: string }[] })
   };
 
   return (
-    <ul ref={ref} className={`${styles.grid} ${inView ? styles.in : ''}`}>
+    <ul ref={ref} className={`${styles.grid} ${icons ? '' : styles.plain} ${inView ? styles.in : ''}`} style={{ ['--cols' as string]: cols }}>
       {items.map((w, i) => (
         <li key={w.title} className={styles.tile} style={{ ['--i' as string]: i }} onPointerMove={onMove}>
           <span className={styles.spot} aria-hidden="true" />
           <div className={styles.top}>
-            <svg className={styles.icon} viewBox="0 0 48 48" aria-hidden="true">
-              {ICONS[i % ICONS.length]}
-            </svg>
+            {icons ? (
+              <svg className={styles.icon} viewBox="0 0 48 48" aria-hidden="true">
+                {icons[i % icons.length]}
+              </svg>
+            ) : null}
             <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
           </div>
           <h3 className={styles.title}>{w.title}</h3>

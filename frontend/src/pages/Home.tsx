@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useTranslation } from '../i18n';
 import { featuredProjectIds, projects } from '../data/projects';
-import { PATHS } from '../lib/router';
+import { useRouter } from '../lib/router';
 import { HomeStory } from '../scene/HomeStory';
 import { Showcase } from '../components/Showcase/Showcase';
 import { CaseView } from '../components/CaseView/CaseView';
@@ -17,6 +17,7 @@ const featured = featuredProjectIds.map((id) => projects.find((p) => p.id === id
 
 export function Home() {
   const { t } = useTranslation();
+  const { href } = useRouter();
   const [open, setOpen] = useState<number | null>(null);
   const step = useCallback((d: number) => setOpen((i) => (i === null ? i : (i + d + featured.length) % featured.length)), []);
   const close = useCallback(() => setOpen(null), []);
@@ -35,7 +36,7 @@ export function Home() {
               </div>
               <p className={s.intro}>{t.homeProjects.intro}</p>
             </Reveal>
-            <Button to={PATHS.projects} variant="ghost">
+            <Button to={href('projects')} variant="ghost">
               {t.homeProjects.cta}
             </Button>
           </div>

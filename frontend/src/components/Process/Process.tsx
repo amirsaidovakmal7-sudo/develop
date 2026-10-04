@@ -45,7 +45,8 @@ const ICONS: ReactNode[] = [
  * the one under the cursor) is active — its icon draws itself, the route
  * fills up to it and the sticky counter rolls to its number.
  */
-export function Process({ num }: { num?: string }) {
+/** `titleA`/`titleB` override the shared heading where the block repeats, so the site never has two identical H2s. */
+export function Process({ num, titleA, titleB }: { num?: string; titleA?: string; titleB?: string }) {
   const { t } = useTranslation();
   const p = t.process;
   const [scrollActive, setScrollActive] = useState(0);
@@ -74,13 +75,13 @@ export function Process({ num }: { num?: string }) {
   };
 
   return (
-    <section className="section" aria-labelledby="process-title">
+    <section id="process" className="section" aria-labelledby="process-title">
       <div className={`container ${styles.grid}`}>
         <div className={styles.aside}>
           <Reveal className={styles.head}>
             <Label num={num}>{p.label}</Label>
             <div id="process-title">
-              <Heading a={p.titleA} b={p.titleB} className={styles.h2} />
+              <Heading a={titleA ?? p.titleA} b={titleB ?? p.titleB} className={styles.h2} />
             </div>
             <p className={styles.intro}>{p.intro}</p>
           </Reveal>

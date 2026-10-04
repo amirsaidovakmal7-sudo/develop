@@ -3,13 +3,18 @@ import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { createParticleEngine } from './engine';
 import { FORM } from './shapes';
 
-export type MatterVariant = 'knot' | 'monogram' | 'lattice';
+export type MatterVariant = 'knot' | 'monogram' | 'lattice' | 'website' | 'plane' | 'phone' | 'funnel';
 
 const CONFIG: Record<MatterVariant, { form: number; count: number; distance: number; size: number; yaw: (t: number) => number }> = {
   knot: { form: FORM.knot, count: 9000, distance: 3.9, size: 15, yaw: (t) => t * 0.16 },
   // The monogram is a flat solid: it sways to show its depth instead of turning its back to the reader.
   monogram: { form: FORM.monogram, count: 22000, distance: 4.1, size: 17, yaw: (t) => Math.sin(t * 0.45) * 0.6 },
   lattice: { form: FORM.lattice, count: 16000, distance: 4.0, size: 15, yaw: (t) => t * 0.12 },
+  // Service pages reuse the home scene's forms; flat ones sway so they never turn edge-on.
+  website: { form: FORM.website, count: 20000, distance: 4.3, size: 15, yaw: (t) => Math.sin(t * 0.4) * 0.45 },
+  plane: { form: FORM.plane, count: 14000, distance: 4.2, size: 15, yaw: (t) => Math.sin(t * 0.35) * 0.7 - 0.3 },
+  phone: { form: FORM.phone, count: 18000, distance: 4.4, size: 15, yaw: (t) => Math.sin(t * 0.45) * 0.45 },
+  funnel: { form: FORM.funnel, count: 16000, distance: 4.3, size: 15, yaw: (t) => t * 0.14 },
 };
 
 /** Small standalone particle object — the same matter as the home scene, in one fixed form. */

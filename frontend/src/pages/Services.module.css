@@ -39,6 +39,11 @@
   color: var(--saffron);
 }
 
+/* The number is decoration, so it stays out of the heading text. */
+.num::before {
+  content: attr(data-num);
+}
+
 .title {
   font: 500 var(--fs-row) / 1 var(--font-display);
   letter-spacing: -0.035em;
@@ -152,7 +157,10 @@
   transform: rotate(-45deg);
 }
 
-.discuss {
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-top: 24px;
 }
 

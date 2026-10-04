@@ -6,11 +6,13 @@ import { useProjectCopy } from '../../lib/useProjectCopy';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import { BrowserFrame, frameLabel } from '../BrowserFrame/BrowserFrame';
 import { Button } from '../ui/Button';
+import { Link, useRouter } from '../../lib/router';
 import styles from './ProjectStack.module.css';
 
 const SLIDE_MS = 2600;
 
 function Screens({ project, playing }: { project: ProjectDefinition; playing: boolean }) {
+  const copy = useProjectCopy(project);
   const images = getProjectImages(project.id);
   const poster = getProjectPoster(project.id);
   const frames = images.length ? images : poster ? [poster] : [];
@@ -31,7 +33,7 @@ function Screens({ project, playing }: { project: ProjectDefinition; playing: bo
             src={img.src}
             width={img.width}
             height={img.height}
-            alt=""
+            alt={copy.screenAlt(i + 1)}
             loading="lazy"
             decoding="async"
             className={i === slide ? styles.shown : undefined}
@@ -70,7 +72,9 @@ function Card({
   setRef: (el: HTMLElement | null) => void;
 }) {
   const { t } = useTranslation();
+  const { href } = useRouter();
   const copy = useProjectCopy(project);
+  const service = project.services[0];
   return (
     <article ref={setRef} className={styles.card} style={{ ['--i' as string]: i }} aria-label={copy.title}>
       <div className={styles.inner}>
@@ -79,7 +83,13 @@ function Card({
             <span className={styles.count}>
               {String(i + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
             </span>
-            <span>{copy.category}</span>
+            <Link to={href(service)} className={styles.service}>
+              {copy.category}
+              <span className="visually-hidden">
+                {' '}
+                — {t.projects.serviceLabel}: {t.servicePages[service].name}
+              </span>
+            </Link>
             <span className={project.status === 'live' ? styles.live : undefined}>{copy.status}</span>
           </p>
           <h2 className={styles.title}>{copy.title}</h2>

@@ -1,58 +1,39 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, type ReactNode } from 'react';
 import { ru } from './ru';
 import { en } from './en';
 import { uz } from './uz';
 import type { Translations } from './ru';
+import { useRouter } from '../lib/router';
+import type { Locale } from '../lib/routes';
 
-export type Locale = 'ru' | 'uz' | 'en';
+export { LOCALES, type Locale } from '../lib/routes';
 
 const dictionaries: Record<Locale, Translations> = { ru, uz, en };
-
-export const LOCALES: Locale[] = ['ru', 'uz', 'en'];
-const DEFAULT_LOCALE: Locale = 'ru';
-const STORAGE_KEY = 'akmal-dev-locale';
-
-function isLocale(value: string | null): value is Locale {
-  return value === 'ru' || value === 'uz' || value === 'en';
-}
-
-function readStoredLocale(): Locale {
-  if (typeof window === 'undefined') return DEFAULT_LOCALE;
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    return isLocale(stored) ? stored : DEFAULT_LOCALE;
-  } catch {
-    return DEFAULT_LOCALE;
-  }
-}
 
 type I18nContextValue = {
   locale: Locale;
   t: Translations;
+  /** Address of the current page in another language (the switcher is plain links). */
+  hrefFor: (locale: Locale) => string;
   setLocale: (locale: Locale) => void;
 };
 
 const I18nContext = createContext<I18nContextValue | null>(null);
 
+/** The language comes from the URL (`/`, `/uz/…`, `/en/…`), never from storage, so every address shows exactly one language. */
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(readStoredLocale);
+  const { locale, route, href, navigate } = useRouter();
 
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);
 
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      /* localStorage unavailable (private mode) — locale just won't persist */
-    }
-  }, []);
+  const hrefFor = useCallback((next: Locale) => href(route === 'notFound' ? 'home' : route, next), [href, route]);
+  const setLocale = useCallback((next: Locale) => navigate(hrefFor(next)), [navigate, hrefFor]);
 
   const value = useMemo<I18nContextValue>(
-    () => ({ locale, t: dictionaries[locale], setLocale }),
-    [locale, setLocale],
+    () => ({ locale, t: dictionaries[locale], hrefFor, setLocale }),
+    [locale, hrefFor, setLocale],
   );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

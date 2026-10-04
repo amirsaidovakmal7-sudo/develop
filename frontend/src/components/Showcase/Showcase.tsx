@@ -116,7 +116,7 @@ export function Showcase({ list, onOpen }: { list: ProjectDefinition[]; onOpen: 
                   src={img.src}
                   width={img.width}
                   height={img.height}
-                  alt=""
+                  alt={copy.screenAlt(i + 1)}
                   loading="lazy"
                   decoding="async"
                   className={i === slide ? styles.shown : undefined}

@@ -26,7 +26,7 @@ export function Projects() {
 
   return (
     <>
-      <PageHero label={p.label} title={p.title} intro={p.intro} />
+      <PageHero label={p.label} title={p.title} titleSub={p.titleSub} intro={p.intro} />
       <section className="container" aria-label={p.title}>
         <div className={s.filters} role="group">
           {FILTERS.map((f) => (

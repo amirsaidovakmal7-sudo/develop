@@ -1,21 +1,28 @@
 import { LOCALES, useTranslation } from '../../i18n';
+import { Link } from '../../lib/router';
 import styles from './Header.module.css';
 
-export function LanguageSwitcher({ className }: { className?: string }) {
-  const { locale, setLocale, t } = useTranslation();
+const NAMES = { ru: 'Русский', uz: 'Oʻzbekcha', en: 'English' } as const;
+
+/** Plain links to the same page in each language, so crawlers can follow every language version. */
+export function LanguageSwitcher({ className, onPick }: { className?: string; onPick?: () => void }) {
+  const { locale, hrefFor, t } = useTranslation();
   return (
-    <div className={`${styles.langs} ${className ?? ''}`} role="group" aria-label={t.common.language}>
+    <nav className={`${styles.langs} ${className ?? ''}`} aria-label={t.common.language}>
       {LOCALES.map((l) => (
-        <button
+        <Link
           key={l}
-          type="button"
+          to={hrefFor(l)}
+          hrefLang={l}
+          lang={l}
+          title={NAMES[l]}
           className={l === locale ? styles.langOn : undefined}
-          aria-pressed={l === locale}
-          onClick={() => setLocale(l)}
+          aria-current={l === locale ? 'true' : undefined}
+          onClick={onPick}
         >
           {l.toUpperCase()}
-        </button>
+        </Link>
       ))}
-    </div>
+    </nav>
   );
 }

@@ -15,10 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
+from django.templatetags.static import static
 from django.urls import path, include
+from django.views.generic import RedirectView
+
+from app.sitemaps import PageSitemap
+from app.views import robots_txt
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('robots.txt', robots_txt),
+    path('sitemap.xml', sitemap, {'sitemaps': {'pages': PageSitemap}}, name='django.contrib.sitemaps.views.sitemap'),
+    # Browsers and some crawlers ask for /favicon.ico regardless of the <link rel="icon">.
+    path('favicon.ico', RedirectView.as_view(url=static('favicon.ico'), permanent=True)),
     path('', include('app.urls')),
 ]
 

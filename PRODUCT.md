@@ -21,11 +21,11 @@ Services site of Akmal, a developer who builds websites, Telegram bots, Telegram
 One person owns the whole path from interface to server to deploy, works directly with the client, no agency or subcontractors. Shown through 12 real shipped or completed projects, several live on the web.
 
 ## Operating Context
-- Django routes: `/`, `/about`, `/services`, `/projects`, `/contacts` (same shell template; unknown paths → shell with status 404), `POST /order` (fields `name`, `phone_number`, optional `telegram`; CSRF via `X-CSRFToken` header or meta tag; AJAX header `X-Requested-With: XMLHttpRequest` returns JSON `{ok}` or 400 `missing_fields` / 502 `telegram_failed`). Delivery is a Telegram bot message to a group (env `TELEGRAM_BOT_TOKEN`, `TELEGRAM_GROUP_ID`).
+- Django routes: 9 pages — `/`, `/about`, `/services`, `/services/websites`, `/services/telegram-bots`, `/services/telegram-mini-app`, `/services/crm`, `/projects`, `/contacts` — in Russian at the root and under `/uz/…`, `/en/…` (one shell template with server-rendered meta and a prerendered snapshot, see SEO_AUDIT.md; trailing slash → 301; unknown paths → 404 page), `/robots.txt`, `/sitemap.xml`, `POST /order` (fields `name`, `phone_number`, optional `telegram`; CSRF via `X-CSRFToken` header or meta tag; AJAX header `X-Requested-With: XMLHttpRequest` returns JSON `{ok}` or 400 `missing_fields` / 502 `telegram_failed`). Delivery is a Telegram bot message to a group (env `TELEGRAM_BOT_TOKEN`, `TELEGRAM_GROUP_ID`).
 - Phone is an Uzbek number: `+998` + 9 digits, masked client-side.
-- Languages: ru (default), uz, en; switcher persists in localStorage; dictionaries in `frontend/src/i18n/{ru,uz,en}.ts`.
+- Languages: ru (default, at the root), uz, en (`/uz`, `/en` prefixes). The URL is the only source of the language; the switcher is plain links to the same page in another language. Dictionaries in `frontend/src/i18n/{ru,uz,en}.ts`; `npm run build` exports the meta to `frontend/dist-seo/meta.json` for Django.
 - Telegram: https://t.me/akm0028.
-- Contact/CTA flow: «Обсудить проект» scrolls to the form on Home/Contacts, otherwise opens /contacts#request. Contact values other than Telegram are placeholders in `src/data/contacts.ts`. Two projects are video-only (Sonata Bot, Akkord) hosted on Uploadcare.
+- Contact/CTA flow: «Обсудить проект» scrolls to the form on Home, Contacts and the service pages, otherwise opens /contacts#request (same language). Contacts in `src/data/contacts.ts`: phone +998 97 777 28 09, Telegram @akm0028, email amirsaidovakmal7@gmail.com, Instagram @akm.028. Two projects are video-only (Sonata Bot, Akkord) hosted on Uploadcare.
 
 ## Capabilities and Constraints
 - Do not change the `/order` contract, remove CSRF, or rewrite Django views without need.

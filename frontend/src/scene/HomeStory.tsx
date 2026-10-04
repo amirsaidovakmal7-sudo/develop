@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useTranslation } from '../i18n';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
-import { PATHS, useRequestHref } from '../lib/router';
+import { useRequestHref, useRouter } from '../lib/router';
+import { SERVICE_PAGES } from '../lib/routes';
 import { Button } from '../components/ui/Button';
 import { Heading } from '../components/ui/Heading';
 import { Label } from '../components/ui/Label';
@@ -30,6 +31,7 @@ const smooth = (a: number, b: number, x: number) => {
 export function HomeStory() {
   const { t } = useTranslation();
   const reduced = usePrefersReducedMotion();
+  const { href } = useRouter();
   const requestHref = useRequestHref();
   const storyRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -183,7 +185,7 @@ export function HomeStory() {
           <p className={styles.lead}>{t.hero.lead}</p>
           <div className={styles.actions}>
             <Button to={requestHref}>{t.hero.ctaPrimary}</Button>
-            <Button to={PATHS.projects} variant="ghost" arrow={null}>
+            <Button to={href('projects')} variant="ghost" arrow={null}>
               {t.hero.ctaSecondary}
             </Button>
           </div>
@@ -208,6 +210,10 @@ export function HomeStory() {
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
+            <Button to={href(SERVICE_PAGES[i])} variant="text">
+              {t.common.more}
+              <span className="visually-hidden">: {t.servicePages[SERVICE_PAGES[i]].name}</span>
+            </Button>
           </div>
         ))}
 
@@ -216,7 +222,7 @@ export function HomeStory() {
           <Heading a={t.scene.systemTitleA} b={t.scene.systemTitleB} className={styles.h2System} />
           <p className={styles.lead}>{t.scene.systemText}</p>
           <div className={styles.actions}>
-            <Button to={PATHS.services}>{t.scene.systemCta}</Button>
+            <Button to={href('services')}>{t.scene.systemCta}</Button>
           </div>
         </div>
 

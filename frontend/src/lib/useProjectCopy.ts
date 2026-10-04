@@ -11,5 +11,9 @@ export function useProjectCopy(project: ProjectDefinition) {
     other: p.categoryOther,
   }[project.category];
   const status = { live: p.statusLive, completed: p.statusCompleted, prototype: p.statusPrototype }[project.status];
-  return { ...p.items[project.i18nKey], category, status };
+  const copy = p.items[project.i18nKey];
+  /** Descriptive alt for the n-th screen (1-based): "Cashflow Tashkent — Сайт делового сообщества, экран 2". */
+  const screenAlt = (n: number) =>
+    p.screenAlt.replace('{title}', copy.title).replace('{subtitle}', copy.subtitle).replace('{n}', String(n));
+  return { ...copy, category, status, screenAlt };
 }

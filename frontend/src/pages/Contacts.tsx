@@ -10,7 +10,9 @@ export function Contacts() {
   const c = t.contacts;
   return (
     <>
-      <PageHero label={c.label} title={c.title} intro={c.intro} />
+      <PageHero label={c.label} title={c.title} titleSub={c.titleSub} intro={c.intro}>
+        <p className={s.heroText}>{c.text}</p>
+      </PageHero>
       <section className="container" aria-label={c.title}>
         <Reveal className={s.contactGrid}>
           {contactOrder.map((key) => (

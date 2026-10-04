@@ -25,6 +25,17 @@
   overflow-wrap: anywhere;
 }
 
+.titleSub {
+  display: block;
+  margin-top: 22px;
+  max-width: 34ch;
+  font: 500 var(--fs-lead) / 1.35 var(--font-text);
+  letter-spacing: -0.005em;
+  text-transform: none;
+  overflow-wrap: normal;
+  color: var(--text);
+}
+
 .intro {
   font-size: var(--fs-lead);
   line-height: 1.5;

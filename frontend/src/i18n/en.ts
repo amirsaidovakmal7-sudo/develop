@@ -3,32 +3,65 @@ import type { Translations } from './ru';
 export const en: Translations = {
   meta: {
     home: {
-      title: 'Websites, Telegram bots and CRM for business — Akmal, developer',
+      title: 'Website, Bot & CRM Development in Tashkent | akmal.dev',
       description:
-        'Websites, Telegram bots, Mini Apps and CRM systems for businesses in Tashkent. Full cycle: from discovery to launch and support.',
+        'Website, Telegram bot, Mini App and CRM development for businesses in Tashkent. Work directly with the developer, from brief to launch and support.',
     },
     about: {
-      title: 'About — Akmal, developer for business',
+      title: 'About Akmal — Developer in Tashkent | akmal.dev',
       description:
-        'Direct work, no middlemen: discovery, design, development, launch and support of digital products for business.',
+        'Akmal is a Tashkent-based developer building websites, Telegram bots and CRM systems for business — one person runs your project, no agency.',
     },
     services: {
-      title: 'Services — websites, Telegram bots, Mini Apps and CRM',
+      title: 'Website, Telegram Bot & CRM Development Services | akmal.dev',
       description:
-        'Multi-page websites, landing pages, Telegram bots, Mini Apps, CRM systems, integrations, hosting and support.',
+        'Landing pages, corporate websites, online stores, Telegram bots, Mini Apps, CRM systems, integrations, hosting and support. Tashkent, Uzbekistan.',
     },
     projects: {
-      title: 'Projects — websites and bots for business',
-      description: 'Real websites, Telegram bots and web apps for learning centres, schools, cafés and communities.',
+      title: 'Portfolio: Websites & Telegram Bots for Business | akmal.dev',
+      description:
+        'Real projects: websites, Telegram bots and web apps for learning centres, music schools, cafés and communities. Task, solution and screens.',
     },
     contacts: {
-      title: 'Contact — discuss a project',
-      description: "Leave a request or message me on Telegram — I'll reply and suggest a solution for your task.",
+      title: 'Contact — Order a Website or Bot in Tashkent | akmal.dev',
+      description:
+        "Leave a request or message me on Telegram: we'll discuss your task and I'll suggest a solution, timeline and price for a website, bot or Mini App.",
+    },
+    websites: {
+      title: 'Website Development in Tashkent | akmal.dev',
+      description:
+        'Website development for business in Tashkent: landing pages, corporate sites and online stores, built end to end. Work directly with the developer.',
+    },
+    telegramBots: {
+      title: 'Telegram Bot Development for Business | akmal.dev',
+      description:
+        'Custom Telegram bot development: lead capture, bookings, orders and payments, manager notifications and CRM sync. Developer based in Tashkent.',
+    },
+    miniApp: {
+      title: 'Telegram Mini App Development | akmal.dev',
+      description:
+        'Telegram Mini Apps for business: an online store, bookings, personal accounts and payments right inside Telegram. Built end to end in Tashkent.',
+    },
+    crm: {
+      title: 'Custom CRM Development for Business | akmal.dev',
+      description:
+        'CRM development around your business: client base, sales pipeline, tasks and reports, integrated with your website and Telegram bot. Tashkent.',
     },
     notFound: {
       title: 'Page not found — akmal.dev',
       description: "This page doesn't exist. Start from the home page or browse services.",
     },
+  },
+  seo: {
+    ogAlt: 'akmal.dev — website, Telegram bot and CRM development in Tashkent',
+    ogHeadline: 'Websites, Telegram bots and CRM for business',
+    ogSub: 'Developer in Tashkent · no middlemen',
+    person: 'Akmal',
+    jobTitle: 'Website, Telegram bot and CRM developer',
+    orgName: 'akmal.dev — Akmal, developer for business',
+    orgDescription: 'Tashkent-based developer: websites, Telegram bots, Telegram Mini Apps and CRM systems for business — from brief to launch and support.',
+    city: 'Tashkent',
+    country: 'Uzbekistan',
   },
   common: {
     skip: 'Skip to content',
@@ -40,6 +73,7 @@ export const en: Translations = {
     next: 'Next',
     toTop: 'Back to top',
     scroll: 'Scroll',
+    more: 'Learn more',
   },
   nav: {
     home: 'Home',
@@ -51,9 +85,9 @@ export const en: Translations = {
   },
   hero: {
     label: 'Developer for business · Tashkent',
-    titleA: 'Websites, bots and CRM',
+    titleA: 'Website, bot and CRM development',
     titleB: 'for your business',
-    lead: "I'm Akmal, a developer based in Tashkent. I build websites, Telegram bots, Telegram Mini Apps and CRM systems for companies — and connect them, so your leads, clients and sales live in one place.",
+    lead: "I'm Akmal, a developer based in Tashkent. I build websites, Telegram bots, Mini Apps and CRM systems for companies end to end — and connect them, so your leads, clients and sales live in one place.",
     ctaPrimary: 'Discuss a project',
     ctaSecondary: 'See projects',
     facts: ['12 projects in the portfolio', 'You work with me directly, no middlemen', 'Full cycle — from brief to support'],
@@ -63,12 +97,12 @@ export const en: Translations = {
     items: [
       {
         title: 'Business websites',
-        text: 'Corporate sites and landing pages: clear structure, built for phones, ready for search, with an admin panel so you can change texts and prices without a developer.',
-        tags: ['Landing pages', 'Multi-page', 'Catalogues'],
+        text: 'I build corporate sites, landing pages and online stores: clear structure, built for phones, ready for search, with an admin panel so you can change texts and prices without a developer.',
+        tags: ['Landing pages', 'Multi-page', 'Stores'],
       },
       {
         title: 'Telegram bots',
-        text: 'A bot that takes requests, answers common questions and sells: conversation flows, online payment, manager notifications and data sent straight to your CRM.',
+        text: 'I develop Telegram bots that take requests, answer common questions and sell: conversation flows, online payment, manager notifications and data sent straight to your CRM.',
         tags: ['Requests', 'Payments', 'Broadcasts'],
       },
       {
@@ -78,7 +112,7 @@ export const en: Translations = {
       },
       {
         title: 'CRM systems',
-        text: 'One place for clients and deals: sales pipeline, tasks for your team, roles and access rights, reports, and links to your website and bot.',
+        text: 'CRM development around your process: one place for clients and deals, a sales pipeline, tasks for your team, roles and reports, and links to your website and bot.',
         tags: ['Sales pipeline', 'Tasks', 'Reports'],
       },
     ],
@@ -92,7 +126,7 @@ export const en: Translations = {
     label: 'Projects',
     titleA: 'Projects that are',
     titleB: 'already live',
-    intro: 'Websites and bots for learning centres, music schools, cafés and communities. Each case shows the task, the solution and the screens.',
+    intro: "Websites and Telegram bots I've built for learning centres, music schools, cafés and communities. Each case shows the task, the solution and the screens.",
     cta: 'All projects',
   },
   process: {
@@ -169,6 +203,7 @@ export const en: Translations = {
     titleB: "Let's talk.",
     cta: 'Discuss a project',
     navTitle: 'Pages',
+    servicesTitle: 'Services',
     contactsTitle: 'Contact',
     languageTitle: 'Language',
     city: 'Tashkent, Uzbekistan',
@@ -176,7 +211,8 @@ export const en: Translations = {
   about: {
     label: 'About',
     title: 'About',
-    lead: "My name is Akmal. I'm a developer based in Tashkent, and I build digital products for business: websites, Telegram bots, Telegram Mini Apps and CRM systems. I work with small and mid-sized businesses and with companies that need their own system for managing clients.",
+    titleSub: 'Akmal — website and Telegram bot developer in Tashkent',
+    lead: "My name is Akmal. I'm a developer based in Tashkent: I build websites, Telegram bots, Mini Apps and CRM systems for business and run every project myself — from discovery to launch and support. I work with small and mid-sized businesses and with companies that need their own system for managing clients, directly, without an agency or a web studio.",
     mission: "My job isn't just to ship a website or a bot — it's to make them useful: collecting requests, saving your team's time and helping you sell.",
     whyLabel: 'Why me',
     whyTitleA: 'Why it’s',
@@ -200,21 +236,21 @@ export const en: Translations = {
       },
     ],
     processLabel: 'Process',
-    ctaTitleA: 'Shall we start',
-    ctaTitleB: 'with your task?',
-    ctaText: "Tell me what your business needs — I'll suggest a solution, timeline and price.",
+    processTitleA: 'How I work',
+    processTitleB: 'on your project',
   },
   services: {
     label: 'Services',
     title: 'Services',
-    intro: 'I build products for real business needs — from a website for your ads to a system where your team manages every client. Order a single service or bring everything together into one connected system.',
+    titleSub: 'Website, Telegram bot and CRM development in Tashkent',
+    intro: 'I build digital products for real business needs — from a landing page for your ads to a CRM system where your team manages every client. Order a single service or bring your website, bot and CRM together into one connected system.',
     priceNote: 'I estimate the price after a short, free conversation about your task.',
     includesLabel: "What's included",
     discuss: 'Discuss this service',
     items: [
       {
         title: 'Multi-page website',
-        short: "A corporate site with sections, a catalogue and request forms — your company's face online.",
+        short: "A corporate website built end to end: sections about your services and company, a catalogue, request forms and an admin panel — your business's face online.",
         includes: [
           'Sections built around your business',
           'Product or service catalogue',
@@ -226,12 +262,12 @@ export const en: Translations = {
       },
       {
         title: 'Landing page',
-        short: 'A one-page site for ads and product launches: a strong offer and a one-click request.',
+        short: 'Landing page development for ads and product launches: a strong offer, fast loading and a one-click request.',
         includes: ['Structure that leads to a request', 'Fast loading on phones', 'Requests to Telegram or CRM', 'Analytics and ad tracking'],
       },
       {
         title: 'Telegram bot',
-        short: 'A bot for requests, consultations and sales that works around the clock.',
+        short: 'Custom Telegram bot development: requests, consultations, bookings and sales around the clock, without a manager.',
         includes: [
           'Conversation flows for your process',
           'Catalogue and cart',
@@ -255,7 +291,7 @@ export const en: Translations = {
       },
       {
         title: 'CRM system',
-        short: 'A system where your team manages clients, deals and tasks — instead of spreadsheets and chats.',
+        short: 'A CRM system for business where your team manages clients, deals and tasks — instead of spreadsheets and chats.',
         includes: [
           'Client base and request history',
           'Sales pipeline and deal stages',
@@ -267,7 +303,7 @@ export const en: Translations = {
       },
       {
         title: 'Integrations',
-        short: 'I connect your website, bot, CRM and the tools you already use, so nobody copies data by hand.',
+        short: 'I integrate your website, bot and CRM with the tools you already use, so nobody copies data by hand.',
         includes: [
           'Website and bot requests — straight to CRM',
           'Online payment',
@@ -288,7 +324,7 @@ export const en: Translations = {
       },
       {
         title: 'Technical support',
-        short: 'I take care of your project after launch.',
+        short: 'Support and maintenance for your website or bot after launch.',
         includes: [
           'Updates and fixes',
           'Backups',
@@ -304,10 +340,252 @@ export const en: Translations = {
       },
     ],
   },
+  servicePage: {
+    aboutLabel: 'In short',
+    kindsLabel: 'Formats',
+    includesLabel: 'Scope',
+    tasksLabel: 'Tasks',
+    examplesLabel: 'Examples',
+    costLabel: 'Price',
+    processLink: 'More about the steps',
+    allProjects: 'All projects',
+    discuss: 'Discuss a project',
+  },
+  servicePages: {
+    websites: {
+      name: 'Website development',
+      label: 'Services · Websites',
+      title: 'Websites',
+      titleSub: 'Website development for business in Tashkent',
+      intro: 'I build websites that bring in leads: from a landing page for your ads to a corporate site with a catalogue or an online store. I handle it end to end — structure, design, development, launch on your domain and support — and you work directly with the developer, not a web studio or a middleman.',
+      whatIsTitle: 'What kind of website your business needs',
+      whatIs: 'A website is where clients arrive from search, ads and social media. A good one explains what you offer in seconds, answers the main questions and leads to a request. We choose the type by the task: a landing page for one service or an ad campaign, a corporate site for a company with several lines of business, an online store for selling products.',
+      kindsTitle: 'Websites I build',
+      kinds: [
+        {
+          title: 'Landing page',
+          text: 'A one-page site for ads and product launches: a strong offer, fast loading on phones and a request form that goes straight to Telegram or your CRM.',
+        },
+        {
+          title: 'Corporate website',
+          text: 'A multi-page company site: sections about your services, team and contacts, request forms and an admin panel so you can edit texts without a developer.',
+        },
+        {
+          title: 'Online store',
+          text: 'A catalogue with filters, a cart, checkout and online payment. Orders reach your manager and are stored in the database.',
+        },
+        {
+          title: 'Business-card site',
+          text: 'A short site with the essentials about your business: services, contacts, address and a contact button — when you need to show up in search quickly.',
+        },
+      ],
+      includesTitle: "What's included in website development",
+      includes: [
+        'Sections built around your business',
+        'Design adapted for phones',
+        'Request forms with Telegram notifications',
+        'Ready for search: headings, meta tags, sitemap',
+        'Admin panel for texts, prices and photos',
+        'Domain, secure connection and analytics',
+      ],
+      tasksTitle: 'What a website does for you',
+      tasks: [
+        {
+          title: 'Brings in leads',
+          text: 'A visitor from search or ads instantly understands what you offer and leaves a request in a couple of taps.',
+        },
+        {
+          title: 'Answers for your manager',
+          text: 'Prices, services, addresses and common questions are in one place and available around the clock.',
+        },
+        {
+          title: 'Works with your bot and CRM',
+          text: 'Website requests land in the CRM and in your manager’s Telegram — no enquiry gets lost.',
+        },
+      ],
+      examplesTitle: 'Website examples',
+      costTitle: 'How much a website costs',
+      costText: "The price depends on the type of site, the number of pages and the features: a landing page, a corporate site and an online store are different amounts of work. After a short conversation about your task I'll estimate the timeline and price for free and split the work into stages.",
+      processTitle: 'How the work goes',
+      processText: 'Six steps: discovery, design, development, testing, launch and support. At each stage you know what you get, and we sign off the result before moving on to the next one.',
+    },
+    telegramBots: {
+      name: 'Telegram bot development',
+      label: 'Services · Telegram bots',
+      title: 'Bots',
+      titleSub: 'Telegram bot development for business',
+      intro: 'I develop custom Telegram bots that work for your manager around the clock: they take requests, book clients, handle orders and payments, answer common questions and pass data to your CRM or a spreadsheet. Each bot is built around your process — from the conversation flow to launch on a server.',
+      whatIsTitle: 'Why a business needs a Telegram bot',
+      whatIs: "Your clients are already in Telegram, and messaging a bot is easier for them than calling or filling in a form on a website. A bot replies instantly at any hour, asks the right questions and hands a complete request to your manager. Your staff stop spending time on the same answers, and enquiries don't get lost in personal chats.",
+      kindsTitle: 'Bots I build',
+      kinds: [
+        {
+          title: 'Lead capture bot',
+          text: 'Collects the name, phone number and request and sends it straight to your manager in the staff group.',
+        },
+        {
+          title: 'Booking bot',
+          text: 'Shows the schedule, books the client and sends reminders about the visit or lesson on its own.',
+        },
+        {
+          title: 'Ordering bot',
+          text: 'A menu or catalogue, a cart, a delivery address and payment — for a café, a delivery service or a shop.',
+        },
+        {
+          title: 'Team assistant',
+          text: 'Broadcasts, reminders, schedules and reports for your staff or students.',
+        },
+      ],
+      includesTitle: "What's included in bot development",
+      includes: [
+        'Conversation flows for your process',
+        'Catalogue and cart',
+        'Online payment',
+        'Manager notifications',
+        'Client broadcasts',
+        'Data to your CRM or spreadsheet',
+      ],
+      tasksTitle: 'What a bot does for you',
+      tasks: [
+        {
+          title: 'No lost enquiries',
+          text: 'Requests that come in at night or at weekends are saved and sent to your manager right away.',
+        },
+        {
+          title: 'Takes over routine',
+          text: 'The bot handles common questions, bookings and reminders.',
+        },
+        {
+          title: 'Keeps clients in touch',
+          text: 'Broadcasts and order status updates reach clients in the messenger they already use.',
+        },
+      ],
+      examplesTitle: 'Bot examples',
+      costTitle: 'How much a Telegram bot costs',
+      costText: "The price depends on the flows, the number of features and the integrations: a lead capture bot and a bot with a catalogue, payments and CRM are different tasks. After we talk it through I'll estimate the timeline and price for free.",
+      processTitle: 'How the work goes',
+      processText: 'Six steps: discovery, conversation design, development, testing, launch and support. At each stage you know what you get, and we sign off the result before moving on to the next one.',
+    },
+    miniApp: {
+      name: 'Telegram Mini App development',
+      label: 'Services · Telegram Mini App',
+      title: 'Mini App',
+      titleSub: 'Telegram Mini App development, end to end',
+      intro: 'I develop Telegram Mini Apps — full web apps that open right inside Telegram: nothing to install, no sign-up, in the messenger your clients already use. I build mini apps for any business task, from an online store in Telegram to an internal service for your team.',
+      whatIsTitle: 'What a Telegram Mini App is',
+      whatIs: 'It is an app inside Telegram: a client taps a button in a bot or a link in a channel, and an interface with a catalogue, a cart, a personal account and payment opens. Telegram already knows who the user is, so there are no passwords or login forms, and notifications arrive in the same chat. Everything a website can do works in the messenger.',
+      kindsTitle: 'Mini Apps I build',
+      kinds: [
+        {
+          title: 'Store in Telegram',
+          text: 'A catalogue with search and filters, a cart, payment and order status — a store where your clients already talk.',
+        },
+        {
+          title: 'Bookings and reservations',
+          text: 'Choosing a service, a specialist and a time, with booking reminders — for salons, clinics, schools and studios.',
+        },
+        {
+          title: 'Personal account and loyalty',
+          text: 'Order history, bonuses, memberships and personal offers for regular clients.',
+        },
+        {
+          title: 'Service for your team',
+          text: 'Internal tools: requests, tasks, reports and records right in your staff’s Telegram.',
+        },
+      ],
+      includesTitle: "What's included in Mini App development",
+      includes: [
+        'Online stores and catalogues',
+        'Booking and reservations',
+        'Personal accounts and loyalty programmes',
+        'Services and internal tools for your team',
+        'Online payment and notifications',
+        'Links to your CRM, website and bot',
+      ],
+      tasksTitle: 'What a Mini App does for you',
+      tasks: [
+        {
+          title: 'Sales without a separate app',
+          text: 'Clients install nothing: the store or booking opens from a chat in one tap.',
+        },
+        {
+          title: 'Login without passwords',
+          text: 'No sign-up or login forms — the user is already recognised through Telegram.',
+        },
+        {
+          title: 'Connected to your bot and CRM',
+          text: 'Orders and requests go straight to the CRM, and notifications to the client’s and manager’s chats.',
+        },
+      ],
+      examplesTitle: 'Related projects',
+      costTitle: 'How much a Mini App costs',
+      costText: "The price depends on the screens, features and integrations: a catalogue with payments and a booking service with personal accounts are different amounts of work. After we talk it through I'll estimate the timeline and price for free.",
+      processTitle: 'How the work goes',
+      processText: 'Six steps: discovery, screen design, development, testing, launch and support. At each stage you know what you get, and we sign off the result before moving on to the next one.',
+    },
+    crm: {
+      name: 'CRM development',
+      label: 'Services · CRM',
+      title: 'CRM',
+      titleSub: 'Custom CRM development for your business',
+      intro: 'I develop CRM systems around the processes of a specific company — instead of spreadsheets, notebooks and chats. All clients, deals and tasks live in one place, requests from your website and Telegram bot land there automatically, and the owner sees sales reports.',
+      whatIsTitle: 'What a CRM is, in plain words',
+      whatIs: 'A CRM is a system that holds all your work with clients: who got in touch, what was agreed, what stage a deal is at and which employee is responsible for it. A custom CRM follows your sales process instead of forcing you into someone else’s template, so it suits a small business and a company with several departments alike.',
+      kindsTitle: 'What you can do in a CRM',
+      kinds: [
+        {
+          title: 'Sales pipeline',
+          text: 'Every deal moves through clear stages, and you can see at which step clients drop off.',
+        },
+        {
+          title: 'Tasks and roles',
+          text: 'Employees get tasks and see only what they need for their work.',
+        },
+        {
+          title: 'Reports',
+          text: 'Requests, sales and manager performance in numbers, without merging spreadsheets by hand.',
+        },
+        {
+          title: 'Integrations',
+          text: 'Links to your website, Telegram bot, online payments and Google Sheets.',
+        },
+      ],
+      includesTitle: "What's included in CRM development",
+      includes: [
+        'Client base and request history',
+        'Sales pipeline and deal stages',
+        'Tasks for your team',
+        'Roles and access levels',
+        'Reports and analytics',
+        'Links to your website, Telegram and other services',
+      ],
+      tasksTitle: 'What a CRM does for you',
+      tasks: [
+        {
+          title: 'No client gets lost',
+          text: 'Enquiries from the website, the bot and the phone are collected in one database with their history.',
+        },
+        {
+          title: 'Order in sales',
+          text: 'You can see who is doing what on each deal, and tasks are not forgotten.',
+        },
+        {
+          title: 'Decisions based on numbers',
+          text: 'The owner sees request and sales reports at any moment.',
+        },
+      ],
+      examplesTitle: 'Related projects',
+      costTitle: 'How much CRM development costs',
+      costText: "The price depends on your processes, staff roles and integrations: request tracking for a small team and a system for several departments are different tasks. Once I've gone through your processes I'll estimate the timeline and price for free and suggest launching in stages.",
+      processTitle: 'How the work goes',
+      processText: 'Six steps: process discovery, planning and design, development, testing, launch and support. At each stage you know what you get, and we sign off the result before moving on to the next one.',
+    },
+  },
   projects: {
     label: 'Projects',
     title: 'Projects',
-    intro: "Websites, bots and web apps I've built for businesses. Each case shows the task, what was done and how it looks.",
+    titleSub: 'Portfolio: websites, Telegram bots and web apps for business',
+    intro: "Websites, Telegram bots and web apps I've built for businesses. Each case shows the task, what was done and how it looks.",
     filterAll: 'All',
     filterWebsite: 'Websites',
     filterBot: 'Bots',
@@ -326,6 +604,8 @@ export const en: Translations = {
     featuresLabel: 'Key features',
     mediaLabel: 'Project screens',
     videoLabel: 'Screen recording',
+    screenAlt: '{title} — {subtitle}, screen {n}',
+    serviceLabel: 'Service',
     items: {
       cashflow: {
         title: 'Cashflow Tashkent',
@@ -357,7 +637,7 @@ export const en: Translations = {
       },
       sonataBot: {
         title: 'Sonata Bot',
-        subtitle: 'Schedule bot for a music school',
+        subtitle: 'Telegram schedule bot for a music school',
         description:
           'The schedule was kept by hand and lessons were being missed. The bot shows the timetable and sends reminders on its own; the admin updates it in a Google Sheet — no developer needed.',
         features: ['Automatic lesson reminders', 'Schedule from Google Sheets', 'Managed without a developer'],
@@ -385,7 +665,7 @@ export const en: Translations = {
       },
       fastfoodBot: {
         title: 'Fast-food Bot',
-        subtitle: 'Ordering bot for a café',
+        subtitle: 'Telegram ordering bot for a café',
         description:
           "Menu and cart right in Telegram, orders with an address and phone number. Every new order lands instantly in the café's staff group.",
         features: ['Menu and cart', 'Delivery location on the map', 'Orders to the staff group'],
@@ -416,7 +696,9 @@ export const en: Translations = {
   contacts: {
     label: 'Contact',
     title: 'Contact',
+    titleSub: 'Get in touch with a website and bot developer in Tashkent',
     intro: "Write in whatever way suits you or leave a request — I'll reply and ask a couple of questions about your task.",
+    text: "We can discuss your task on Telegram, by phone or on a call — whatever suits you. Describe it in the form below: I'll ask a few clarifying questions and suggest a solution, timeline and price for a website, bot or Mini App.",
     phone: 'Phone',
     telegram: 'Telegram',
     email: 'Email',

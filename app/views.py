@@ -2,10 +2,13 @@ import logging
 import os
 import time
 
-from django.http import JsonResponse
+from django.http import HttpResponse, HttpResponsePermanentRedirect, JsonResponse
 from django.shortcuts import render, redirect
+from django.views.decorators.http import require_GET
 import telebot
 from telebot.apihelper import ApiTelegramException
+
+from . import seo
 
 bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
 group_id = os.environ.get('TELEGRAM_GROUP_ID')
@@ -13,13 +16,35 @@ bot = telebot.TeleBot(bot_token) if bot_token else None
 logger = logging.getLogger(__name__)
 
 
-def home_page(request, *args):
-    return render(request, 'index.html')
+def page(request):
+    """Every site page in every language: one address per page, the <head> and markup rendered for it."""
+    path = request.path
+    if path != '/' and path.endswith('/'):
+        # /about/ and /uz/ are the same pages as /about and /uz: one canonical address, the query kept.
+        target = path.rstrip('/') or '/'
+        query = request.META.get('QUERY_STRING')
+        return HttpResponsePermanentRedirect(f'{target}?{query}' if query else target)
+    match = seo.resolve(path)
+    if match is None:
+        return not_found(request)
+    return render(request, 'index.html', seo.page_context(*match))
 
 
 def not_found(request, exception=None):
     # The React router renders its own 404 page; the status code tells crawlers the URL does not exist.
-    return render(request, 'index.html', status=404)
+    return render(request, 'index.html', seo.not_found_context(request.path), status=404)
+
+
+@require_GET
+def robots_txt(request):
+    lines = [
+        'User-agent: *',
+        'Allow: /',
+        'Disallow: /admin/',
+        'Disallow: /order',
+        f'Sitemap: {seo.origin()}/sitemap.xml',
+    ]
+    return HttpResponse('\n'.join(lines) + '\n', content_type='text/plain; charset=utf-8')
 
 
 def send_to_group(text, attempts=3):

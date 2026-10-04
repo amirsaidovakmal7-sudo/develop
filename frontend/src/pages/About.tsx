@@ -1,8 +1,6 @@
 import { useTranslation } from '../i18n';
-import { PATHS, useRequestHref } from '../lib/router';
 import { PageHero } from '../components/PageHero/PageHero';
 import { Process } from '../components/Process/Process';
-import { Button } from '../components/ui/Button';
 import { Heading } from '../components/ui/Heading';
 import { Label } from '../components/ui/Label';
 import { Reveal } from '../components/ui/Reveal';
@@ -12,11 +10,10 @@ import s from './pages.module.css';
 export function About() {
   const { t } = useTranslation();
   const a = t.about;
-  const requestHref = useRequestHref();
 
   return (
     <>
-      <PageHero label={a.label} title={a.title} intro={a.lead} matter="monogram">
+      <PageHero label={a.label} title={a.title} titleSub={a.titleSub} intro={a.lead} matter="monogram">
         <p className={s.mission}>{a.mission}</p>
       </PageHero>
 
@@ -32,24 +29,7 @@ export function About() {
         </div>
       </section>
 
-      <Process num="02" />
-
-      <section className="section">
-        <div className="container">
-          <Reveal className={s.band}>
-            <div>
-              <Heading a={a.ctaTitleA} b={a.ctaTitleB} className={s.h2} />
-              <p>{a.ctaText}</p>
-            </div>
-            <div className={s.bandActions}>
-              <Button to={requestHref}>{t.nav.cta}</Button>
-              <Button to={PATHS.services} variant="ghost" arrow={null}>
-                {t.nav.services}
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <Process num="02" titleA={a.processTitleA} titleB={a.processTitleB} />
     </>
   );
 }

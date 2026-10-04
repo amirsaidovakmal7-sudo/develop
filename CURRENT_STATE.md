@@ -4,7 +4,7 @@
 - **Бэкенд:** Django 6. Маршруты `/` (шаблон `app/templates/index.html` с `{% vite_asset_tags %}`) и `POST /order` (поля `name`, `phone_number`, CSRF, JSON `{ok}` / 400 `missing_fields` / 502 `telegram_failed`, отправка в Telegram-группу через telebot).
 - **Фронтенд:** React 19 + TypeScript + Vite 8, CSS Modules, без runtime-зависимостей кроме React. Одностраничник, навигация якорями.
 - **3D:** самописный WebGL2 — плоская решётка гирих за всей страницей (`scenes/GirihField`, ~790 строк), реагирует на курсор и скролл.
-- **i18n:** `src/i18n/{ru,uz,en}.ts`, тип выводится из `ru.ts`, язык хранится в localStorage (`akmal-dev-locale`).
+- **i18n:** `src/i18n/{ru,uz,en}.ts`, тип выводится из `ru.ts`, язык задаётся адресом (`/`, `/uz/…`, `/en/…`), localStorage больше не используется.
 
 ## Блоки страницы и оценка
 
