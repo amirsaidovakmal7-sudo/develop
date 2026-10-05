@@ -16,7 +16,7 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
-MANIFEST_PATH = Path(settings.BASE_DIR) / 'frontend' / 'dist' / '.vite' / 'manifest.json'
+MANIFEST_PATH = Path(settings.FRONTEND_DIR) / 'dist' / '.vite' / 'manifest.json'
 ENTRY_KEY = 'index.html'
 
 # The two faces that carry the first screen's largest type. They are

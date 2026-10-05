@@ -13,7 +13,7 @@ from urllib.parse import urlsplit
 from django.conf import settings
 
 # Server-only build output; kept out of frontend/dist so it is not published as static files.
-BUILD = Path(settings.BASE_DIR) / 'frontend' / 'dist-seo'
+BUILD = Path(settings.FRONTEND_DIR) / 'dist-seo'
 META_PATH = BUILD / 'meta.json'
 PRERENDER_DIR = BUILD / 'prerender'
 

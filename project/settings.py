@@ -140,8 +140,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # output is served by Django as static files — see
 # app/templatetags/vite_assets.py for how the hashed entry filenames are
 # resolved from frontend/dist/.vite/manifest.json.
+# The frontend lives next to this project folder (<repo>/frontend).
+FRONTEND_DIR = Path(os.environ.get('FRONTEND_DIR', BASE_DIR.parent / 'frontend'))
 STATICFILES_DIRS = [
-    BASE_DIR / 'frontend' / 'dist',
+    FRONTEND_DIR / 'dist',
 ]
 
 # --- SEO ---------------------------------------------------------------
