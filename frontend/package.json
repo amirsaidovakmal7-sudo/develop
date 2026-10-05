@@ -1,0 +1,35 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build && node scripts/gen-seo.ts && node scripts/prerender.mjs",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "check-i18n": "node scripts/check-i18n.ts",
+    "gen-og": "node scripts/gen-og.mjs",
+    "gen-seo": "node scripts/gen-seo.ts",
+    "prerender": "node scripts/prerender.mjs",
+    "fetch-media": "node scripts/fetch-media.mjs",
+    "gen-media-sizes": "node scripts/gen-media-sizes.mjs",
+    "gen-fonts": "node scripts/gen-fonts.mjs",
+    "gen-video-posters": "node scripts/gen-video-posters.mjs"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "puppeteer-core": "^23.11.1",
+    "sharp": "^0.35.4",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}
